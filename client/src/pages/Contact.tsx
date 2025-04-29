@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, Send, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,8 @@ import { insertContactSchema } from "@shared/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import PersonalizedCTA from "@/components/PersonalizedCTA";
+import { useBrowsing } from "@/hooks/use-browsing-context";
 
 const contactSchema = insertContactSchema.extend({
   name: z.string().min(2, {
@@ -33,6 +35,12 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { updateInterest } = useBrowsing();
+  
+  // Track that user is interested in contacting when they visit this page
+  useEffect(() => {
+    updateInterest('contact');
+  }, [updateInterest]);
   
   const {
     register,
@@ -76,7 +84,7 @@ const Contact = () => {
     <section id="contact" className="py-32 bg-dark-bg">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
@@ -85,6 +93,16 @@ const Contact = () => {
           <p className="text-gray-300 max-w-2xl mx-auto">
             Let's discuss how we can help accelerate your digital presence.
           </p>
+        </motion.div>
+        
+        {/* Personalized CTA above contact form */}
+        <motion.div
+          className="max-w-3xl mx-auto mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <PersonalizedCTA />
         </motion.div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

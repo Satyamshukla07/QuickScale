@@ -115,6 +115,25 @@ const Services = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Personalized CTA Section */}
+      <section className="py-16 bg-dark-bg relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute inset-0 opacity-10 bg-noise"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-electric-blue/10 via-transparent to-neon-purple/10 opacity-50"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <motion.div
+            className="max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <PersonalizedCTA />
+          </motion.div>
+        </div>
+      </section>
       
       <section className="py-24 bg-gradient-to-b from-dark-bg to-black/90">
         <PriceCalculator />

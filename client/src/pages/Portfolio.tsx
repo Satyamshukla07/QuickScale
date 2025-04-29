@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PortfolioLightbox from "@/components/PortfolioLightbox";
 import GlassCard from "@/components/GlassCard";
+import PersonalizedCTA from "@/components/PersonalizedCTA";
+import { useBrowsing } from "@/hooks/use-browsing-context";
 
 interface Project {
   id: number;
@@ -17,6 +19,12 @@ interface Project {
 const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const { updateInterest } = useBrowsing();
+  
+  // Track that user is interested in portfolio when they visit this page
+  useEffect(() => {
+    updateInterest('portfolio');
+  }, [updateInterest]);
 
   const projects: Project[] = [
     {
@@ -148,6 +156,18 @@ const Portfolio = () => {
               </GlassCard>
             </motion.div>
           ))}
+        </motion.div>
+      </div>
+      
+      {/* Personalized CTA Section */}
+      <div className="max-w-3xl mx-auto mt-16 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <PersonalizedCTA />
         </motion.div>
       </div>
 
