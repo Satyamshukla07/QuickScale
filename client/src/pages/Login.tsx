@@ -55,7 +55,7 @@ const Login = () => {
           title: "Success",
           description: "Successfully logged in as admin",
         });
-        navigate('/admin');
+        navigate('/admin-dashboard');
       } else {
         toast({
           variant: "destructive",

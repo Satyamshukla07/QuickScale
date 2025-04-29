@@ -20,6 +20,14 @@ interface FormSubmission {
 }
 
 export default function AdminDashboard() {
+  const [, navigate] = useLocation();
+  
+  // Check authentication
+  useEffect(() => {
+    if (localStorage.getItem('isAuthenticated') !== 'true') {
+      navigate('/login');
+    }
+  }, []);
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState<string>("all");
   
