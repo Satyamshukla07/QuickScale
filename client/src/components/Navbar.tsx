@@ -102,7 +102,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
                   navigate('/');
                 }}
               >
-                {t('navbar.logout')}
+                Logout
               </Button>
             </div>
           ) : (
