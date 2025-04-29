@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "wouter";
+import { useLocation } from 'wouter';
 import { useQuery, useMutation, QueryClient } from "@tanstack/react-query";
 import { getQueryFn, apiRequest, queryClient } from "@/lib/queryClient";
 import { AlertCircle, CheckCircle, Clock, Mail, MessageSquare, User, CalendarClock, Phone } from "lucide-react";
@@ -21,7 +21,7 @@ interface FormSubmission {
 }
 
 export default function AdminDashboard() {
-  const [, navigate] = useLocation();
+  const [, setLocation] = useLocation();
   const [initialLoading, setInitialLoading] = useState(true);
 
   useEffect(() => {
@@ -30,14 +30,14 @@ export default function AdminDashboard() {
       const isAdmin = localStorage.getItem('userName') === 'Admin';
 
       if (!isAuth || !isAdmin) {
-        navigate('/login');
+        setLocation('/login');
         return;
       }
       setInitialLoading(false);
     };
 
     checkAuth();
-  }, [navigate]);
+  }, [setLocation]);
 
   if (initialLoading) {
     return (

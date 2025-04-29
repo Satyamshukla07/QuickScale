@@ -53,7 +53,7 @@ const Login = () => {
           title: "Success",
           description: "Successfully logged in as admin",
         });
-        navigate('/admin');
+        navigate('/admin-dashboard');
       } else {
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('userName', data.email.split('@')[0]);

@@ -87,7 +87,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
         <div className="hidden md:flex items-center space-x-4">
           {isAuthenticated ? (
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" onClick={() => navigate(localStorage.getItem('userName') === 'Admin' ? '/admin' : '/dashboard')}>
+              <Button variant="ghost" onClick={() => navigate(localStorage.getItem('userName') === 'Admin' ? '/admin-dashboard' : '/dashboard')}>
                 {localStorage.getItem('userName') || 'Profile'}
               </Button>
               <Button 
