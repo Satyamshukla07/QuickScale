@@ -76,21 +76,43 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
           <PersonalizedCTA variant="compact" />
         </div>
         
-        {/* Login/Signup Menu */}
+        {/* User Menu */}
         <div className="hidden md:flex items-center space-x-4">
-          <Button 
-            variant="ghost" 
-            className="text-light-text hover:text-electric-blue transition duration-300"
-            onClick={() => openAuthModal('login')}
-          >
-            {t('navbar.login')}
-          </Button>
-          <Button 
-            className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
-            onClick={() => openAuthModal('signup')}
-          >
-            {t('navbar.signup')}
-          </Button>
+          {localStorage.getItem('isAuthenticated') ? (
+            <div className="flex items-center space-x-4">
+              <Button variant="ghost" onClick={() => navigate('/dashboard')}>
+                {localStorage.getItem('userName') || 'Profile'}
+              </Button>
+              <Button 
+                variant="ghost"
+                className="text-light-text hover:text-electric-blue transition duration-300"
+                onClick={() => {
+                  localStorage.removeItem('isAuthenticated');
+                  localStorage.removeItem('userName');
+                  navigate('/');
+                  window.location.reload();
+                }}
+              >
+                {t('navbar.logout')}
+              </Button>
+            </div>
+          ) : (
+            <>
+              <Button 
+                variant="ghost" 
+                className="text-light-text hover:text-electric-blue transition duration-300"
+                onClick={() => openAuthModal('login')}
+              >
+                {t('navbar.login')}
+              </Button>
+              <Button 
+                className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
+                onClick={() => openAuthModal('signup')}
+              >
+                {t('navbar.signup')}
+              </Button>
+            </>
+          )}
         </div>
         
         {/* Mobile Menu Toggle */}

@@ -49,6 +49,8 @@ const Login = () => {
       // email: admin@example.com
       // password: admin123
       if (data.email === 'admin@example.com' && data.password === 'admin123') {
+        localStorage.setItem('isAuthenticated', 'true');
+        localStorage.setItem('userName', 'Admin');
         toast({
           title: "Success",
           description: "Successfully logged in as admin",
