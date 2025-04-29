@@ -27,9 +27,11 @@
   --radius: 0.5rem;
 
   /* Custom colors */
-  --electric-blue: 212 100% 50%;
-  --neon-purple: 271 80% 57%;
-  --dark-bg: 222 47% 5%;
+  --electric-blue: 195 100% 50%;
+  --neon-purple: 280 100% 65%;
+  --neon-pink: 320 100% 60%;
+  --neon-teal: 174 100% 45%;
+  --dark-bg: 220 50% 3%;
   --light-text: 220 14% 96%;
   
   /* Chart colors */
@@ -52,10 +54,12 @@
 
 body {
   @apply font-montserrat antialiased bg-background text-foreground;
-  background-color: hsl(222 47% 5%);
+  background-color: hsl(220 50% 3%);
   background-image: 
-    radial-gradient(circle at 20% 30%, rgba(58, 134, 255, 0.15) 0%, transparent 25%),
-    radial-gradient(circle at 80% 70%, rgba(131, 56, 236, 0.15) 0%, transparent 25%);
+    radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.18) 0%, transparent 25%),
+    radial-gradient(circle at 85% 60%, rgba(198, 82, 255, 0.18) 0%, transparent 25%),
+    radial-gradient(circle at 50% 80%, rgba(255, 56, 179, 0.12) 0%, transparent 20%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   color: hsl(220 14% 96%);
   overflow-x: hidden;
 }
@@ -69,7 +73,29 @@ body {
 @layer components {
   /* Glassmorphism */
   .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-lg;
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-lg relative overflow-hidden;
+  }
+  
+  .glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.03) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-22deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+  }
+  
+  .glass:hover::before {
+    animation: shine 1.5s ease;
   }
   
   .glass-card {
@@ -77,7 +103,34 @@ body {
   }
   
   .glass-card:hover {
-    @apply transform -translate-y-1 shadow-electric;
+    @apply transform -translate-y-1;
+    box-shadow: 
+      0 10px 25px -5px rgba(0, 210, 255, 0.3),
+      0 5px 15px -8px rgba(0, 210, 255, 0.2);
+  }
+  
+  /* Gradient borders */
+  .gradient-border {
+    position: relative;
+    border-radius: 0.75rem;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, hsl(var(--electric-blue)), hsl(var(--neon-purple)), hsl(var(--neon-pink)));
+    border-radius: 0.85rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .gradient-border:hover::before {
+    opacity: 1;
   }
   
   /* Navigation underline effect */
@@ -86,7 +139,7 @@ body {
   }
   
   .nav-link::after {
-    @apply content-[''] block w-0 h-0.5 bg-electric-blue transition-all duration-300;
+    @apply content-[''] absolute block w-0 h-0.5 bg-gradient-to-r from-electric-blue via-neon-purple to-neon-pink transition-all duration-300 bottom-0 left-0;
   }
   
   .nav-link:hover::after, .nav-link.active::after {
@@ -95,16 +148,33 @@ body {
   
   /* Gradient text */
   .gradient-text {
-    @apply bg-gradient-to-r from-electric-blue to-neon-purple bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-electric-blue via-neon-teal to-neon-purple bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: textShine 5s linear infinite;
   }
   
   /* Shadow effects */
   .shadow-electric {
-    box-shadow: 0 10px 40px 0 rgba(58, 134, 255, 0.2);
+    box-shadow: 
+      0 10px 25px -5px rgba(0, 210, 255, 0.3),
+      0 5px 15px -8px rgba(0, 210, 255, 0.2);
   }
   
   .shadow-neon {
-    box-shadow: 0 10px 40px 0 rgba(131, 56, 236, 0.2);
+    box-shadow:
+      0 10px 25px -5px rgba(198, 82, 255, 0.3),
+      0 5px 15px -8px rgba(198, 82, 255, 0.2);
+  }
+  
+  .shadow-pink {
+    box-shadow: 
+      0 10px 25px -5px rgba(255, 56, 179, 0.3),
+      0 5px 15px -8px rgba(255, 56, 179, 0.2);
+  }
+  
+  /* Button hover effects */
+  .btn-glow:hover {
+    animation: btnGlow 1.5s infinite alternate;
   }
 }
 
@@ -120,4 +190,61 @@ body {
   .animation-delay-700 {
     animation-delay: 700ms;
   }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .animate-float-reverse {
+    animation: floatReverse 7s ease-in-out infinite;
+  }
+}
+
+/* Keyframe animations */
+@keyframes shine {
+  0% { opacity: 0; left: -50%; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0; left: 120%; }
+}
+
+@keyframes textShine {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes btnGlow {
+  0% { box-shadow: 0 0 5px rgba(0, 210, 255, 0.5), 0 0 10px rgba(0, 210, 255, 0.3); }
+  100% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.8), 0 0 30px rgba(0, 210, 255, 0.5); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes floatReverse {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(15px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Multi-colored border animation */
+@keyframes borderGlow {
+  0% { border-image-source: linear-gradient(45deg, hsl(var(--electric-blue)), hsl(var(--neon-purple))); }
+  25% { border-image-source: linear-gradient(45deg, hsl(var(--neon-purple)), hsl(var(--neon-pink))); }
+  50% { border-image-source: linear-gradient(45deg, hsl(var(--neon-pink)), hsl(var(--neon-teal))); }
+  75% { border-image-source: linear-gradient(45deg, hsl(var(--neon-teal)), hsl(var(--electric-blue))); }
+  100% { border-image-source: linear-gradient(45deg, hsl(var(--electric-blue)), hsl(var(--neon-purple))); }
 }

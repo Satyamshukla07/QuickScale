@@ -50,6 +50,8 @@ export default {
         ring: "hsl(var(--ring))",
         "electric-blue": "hsl(var(--electric-blue))",
         "neon-purple": "hsl(var(--neon-purple))",
+        "neon-pink": "hsl(var(--neon-pink))",
+        "neon-teal": "hsl(var(--neon-teal))",
         "dark-bg": "hsl(var(--dark-bg))",
         "light-text": "hsl(var(--light-text))",
         chart: {
