@@ -71,14 +71,6 @@ const Login = () => {
     } finally {
       setIsSubmitting(false);
     }
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to login",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
   };
   
   return (
