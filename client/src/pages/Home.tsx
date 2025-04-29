@@ -277,10 +277,13 @@ const Home = () => {
                 >
                   <GlassCard className="h-full flex flex-col relative overflow-hidden group" hoverEffect>
                     {/* Service image */}
-                    <div className="h-48 w-full overflow-hidden">
+                    <div className="h-48 w-full overflow-hidden relative">
                       <img 
                         src={service.image} 
-                        alt={service.title} 
+                        alt={service.title}
+                        onError={(e) => {
+                          e.currentTarget.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80";
+                        }}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
