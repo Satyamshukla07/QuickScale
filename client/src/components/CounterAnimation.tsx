@@ -78,7 +78,7 @@ const CounterAnimation = ({
         <div className={`text-4xl md:text-5xl font-bold font-poppins mb-2 ${textColorClass}`}>
           <span>{count}</span>{symbol}
         </div>
-        <p className="text-gray-900 dark:text-gray-300">{label}</p>
+        <p className="text-gray-300">{label}</p>
       </GlassCard>
     </motion.div>
   );

@@ -1,100 +1,269 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { UserCircle, Settings, Users, BarChart, Package, Globe } from "lucide-react";
-import GlassCard from "@/components/GlassCard";
 
-const AdminDashboard = () => {
-  const [stats] = useState([
-    { label: "Total Users", value: "1,234", icon: Users, color: "text-electric-blue" },
-    { label: "Active Services", value: "56", icon: Package, color: "text-neon-purple" },
-    { label: "Revenue", value: "$45,678", icon: BarChart, color: "text-neon-teal" },
-    { label: "Global Reach", value: "25+", icon: Globe, color: "text-neon-pink" }
-  ]);
+import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { getQueryFn, apiRequest } from "@/lib/queryClient";
+import { AlertCircle, CheckCircle, Clock, Mail, MessageSquare, User, CalendarClock, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { useToast } from "@/hooks/use-toast";
+import { formatDistanceToNow } from "date-fns";
+
+interface FormSubmission {
+  id: number;
+  type: string;
+  data: Record<string, any>;
+  createdAt: string;
+  email: string;
+  phoneNumber: string;
+  viewed: boolean;
+}
+
+export default function AdminDashboard() {
+  const [, navigate] = useLocation();
+  const { toast } = useToast();
+  const [activeTab, setActiveTab] = useState<string>("all");
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const checkAuth = () => {
+      const isAuth = localStorage.getItem('isAuthenticated') === 'true';
+      const userEmail = localStorage.getItem('userEmail');
+      
+      if (!isAuth || userEmail !== 'admin@example.com') {
+        navigate('/login');
+        return;
+      }
+      setIsAdmin(true);
+    };
+
+    checkAuth();
+  }, [navigate]);
+
+  const { data: submissions = [], isLoading, refetch } = useQuery<FormSubmission[]>({
+    queryKey: ['/api/admin/submissions'],
+    queryFn: getQueryFn({ on401: "throw" }),
+    enabled: isAdmin
+  });
+
+  const markAsViewedMutation = useMutation({
+    mutationFn: async (id: number) => {
+      const res = await apiRequest('PUT', `/api/admin/submissions/${id}/view`);
+      return await res.json();
+    },
+    onSuccess: () => {
+      refetch();
+      toast({
+        title: "Marked as viewed",
+        description: "This submission has been marked as viewed",
+      });
+    },
+    onError: (error) => {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to mark submission as viewed",
+      });
+    },
+  });
+
+  if (!isAdmin) {
+    return null;
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p className="text-xl">Loading submissions...</p>
+      </div>
+    );
+  }
+
+  // Filter submissions based on active tab
+  const filteredSubmissions = submissions.filter(submission => {
+    if (activeTab === "all") return true;
+    if (activeTab === "unread") return !submission.viewed;
+    return submission.type === activeTab;
+  });
+
+  // Count submissions by type
+  const unreadCount = submissions.filter(s => !s.viewed).length;
+  const contactCount = submissions.filter(s => s.type === "contact").length;
+  const quoteCount = submissions.filter(s => s.type === "quote").length;
+  const authCount = submissions.filter(s => s.type === "login" || s.type === "signup").length;
+
+  const handleMarkAsViewed = (id: number) => {
+    markAsViewedMutation.mutate(id);
+  };
+
+  const getSubmissionIcon = (type: string) => {
+    switch (type) {
+      case "contact": return <MessageSquare className="h-5 w-5 text-blue-500" />;
+      case "quote": return <AlertCircle className="h-5 w-5 text-purple-500" />;
+      case "login": return <User className="h-5 w-5 text-green-500" />;
+      case "signup": return <User className="h-5 w-5 text-teal-500" />;
+      default: return <MessageSquare className="h-5 w-5" />;
+    }
+  };
+
+  const formatDate = (dateString: string) => {
+    try {
+      return formatDistanceToNow(new Date(dateString), { addSuffix: true });
+    } catch (error) {
+      return dateString;
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
-            <p className="text-gray-700 dark:text-gray-300 mt-1">Welcome back, Admin</p>
+    <div className="container max-w-7xl mx-auto mt-24 pt-16 pb-10 px-4 sm:px-6">
+      <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+        Admin Dashboard
+      </h1>
+
+      <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab}>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+          <TabsList className="mb-4 sm:mb-0">
+            <TabsTrigger value="all" className="relative">
+              All
+              <Badge variant="secondary" className="ml-1">{submissions.length}</Badge>
+            </TabsTrigger>
+            <TabsTrigger value="unread" className="relative">
+              Unread
+              <Badge variant="destructive" className="ml-1">{unreadCount}</Badge>
+            </TabsTrigger>
+            <TabsTrigger value="contact" className="relative">
+              Contact
+              <Badge variant="secondary" className="ml-1">{contactCount}</Badge>
+            </TabsTrigger>
+            <TabsTrigger value="quote" className="relative">
+              Quote
+              <Badge variant="secondary" className="ml-1">{quoteCount}</Badge>
+            </TabsTrigger>
+            <TabsTrigger value="login" className="relative">
+              Auth
+              <Badge variant="secondary" className="ml-1">{authCount}</Badge>
+            </TabsTrigger>
+          </TabsList>
+        </div>
+
+        <TabsContent value={activeTab} className="mt-0">
+          <div className="grid gap-6">
+            {filteredSubmissions.length === 0 ? (
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="text-center py-10">
+                    <p className="text-muted-foreground">No form submissions found</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ) : (
+              filteredSubmissions.map((submission) => (
+                <Card key={submission.id} className={submission.viewed ? "opacity-80" : "border-blue-400"}>
+                  <CardHeader className="pb-2">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-center">
+                        {getSubmissionIcon(submission.type)}
+                        <CardTitle className="ml-2 text-xl">
+                          {submission.type.charAt(0).toUpperCase() + submission.type.slice(1)} Submission
+                        </CardTitle>
+                        {!submission.viewed && (
+                          <Badge variant="default" className="ml-2">New</Badge>
+                        )}
+                      </div>
+                      <CardDescription>
+                        <div className="flex items-center text-sm">
+                          <CalendarClock className="h-4 w-4 mr-1" />
+                          {formatDate(submission.createdAt)}
+                        </div>
+                      </CardDescription>
+                    </div>
+                  </CardHeader>
+
+                  <CardContent>
+                    <div className="space-y-2">
+                      {submission.type === "contact" && (
+                        <>
+                          <p><strong>Name:</strong> {submission.data.name}</p>
+                          <p><strong>Email:</strong> {submission.data.email}</p>
+                          <p><strong>Subject:</strong> {submission.data.subject}</p>
+                          <p><strong>Message:</strong> {submission.data.message}</p>
+                        </>
+                      )}
+
+                      {submission.type === "quote" && (
+                        <>
+                          <p><strong>Name:</strong> {submission.data.name || 'N/A'}</p>
+                          <p><strong>Email:</strong> {submission.data.email || 'N/A'}</p>
+                          <p><strong>Phone:</strong> {submission.data.phone || 'N/A'}</p>
+                          <p><strong>Project Type:</strong> {submission.data.projectType || 'N/A'}</p>
+                          <p><strong>Budget:</strong> {submission.data.budget || 'N/A'}</p>
+                          <p><strong>Timeline:</strong> {submission.data.timeline || 'N/A'}</p>
+                          <p><strong>Details:</strong> {submission.data.details || 'N/A'}</p>
+                        </>
+                      )}
+
+                      {(submission.type === "login" || submission.type === "signup") && (
+                        <>
+                          <p><strong>Username:</strong> {submission.data.username}</p>
+                          {submission.data.email && <p><strong>Email:</strong> {submission.data.email}</p>}
+                          {submission.data.name && <p><strong>Name:</strong> {submission.data.name}</p>}
+                        </>
+                      )}
+
+                      <div className="flex mt-4">
+                        {submission.email && (
+                          <div className="flex items-center mr-4 text-sm text-muted-foreground">
+                            <Mail className="h-4 w-4 mr-1" />
+                            {submission.email}
+                          </div>
+                        )}
+
+                        {submission.phoneNumber && (
+                          <div className="flex items-center text-sm text-muted-foreground">
+                            <Phone className="h-4 w-4 mr-1" />
+                            {submission.phoneNumber}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </CardContent>
+
+                  <CardFooter className="flex justify-between pt-2">
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      {submission.viewed ? (
+                        <div className="flex items-center">
+                          <CheckCircle className="h-4 w-4 mr-1 text-green-500" />
+                          Viewed
+                        </div>
+                      ) : (
+                        <div className="flex items-center">
+                          <Clock className="h-4 w-4 mr-1 text-amber-500" />
+                          New submission
+                        </div>
+                      )}
+                    </div>
+
+                    <div>
+                      {!submission.viewed && (
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleMarkAsViewed(submission.id)}
+                          disabled={markAsViewedMutation.isPending}
+                        >
+                          Mark as viewed
+                        </Button>
+                      )}
+                    </div>
+                  </CardFooter>
+                </Card>
+              ))
+            )}
           </div>
-          <button className="p-2 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors">
-            <Settings className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-            >
-              <GlassCard className="p-6">
-                <div className="flex items-center">
-                  <div className={`p-3 rounded-full ${stat.color} bg-opacity-20 mr-4`}>
-                    <stat.icon className={`w-6 h-6 ${stat.color}`} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-700 dark:text-gray-300 font-medium">
-                      {stat.label}
-                    </p>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-1">
-                      {stat.value}
-                    </h3>
-                  </div>
-                </div>
-              </GlassCard>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Recent Activity */}
-          <GlassCard className="p-6">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Recent Activity</h2>
-            <div className="space-y-4">
-              {Array.from({ length: 5 }).map((_, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                    <UserCircle className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-                  </div>
-                  <div>
-                    <p className="text-gray-900 dark:text-white font-medium">User Action {index + 1}</p>
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
-                      Activity description goes here
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </GlassCard>
-
-          {/* Quick Actions */}
-          <GlassCard className="p-6">
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Quick Actions</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {["Manage Users", "View Reports", "Update Content", "System Settings"].map(
-                (action, index) => (
-                  <button
-                    key={index}
-                    className="p-4 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-left font-medium"
-                  >
-                    {action}
-                  </button>
-                )
-              )}
-            </div>
-          </GlassCard>
-        </div>
-      </div>
+        </TabsContent>
+      </Tabs>
     </div>
   );
-};
-
-export default AdminDashboard;
+}

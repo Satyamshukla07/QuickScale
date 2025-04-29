@@ -40,7 +40,7 @@ export const SERVICES = [
     description: "Custom, responsive websites built with cutting-edge technologies that drive conversions and growth.",
     icon: "Code",
     color: "teal",
-    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    image: "https://images.unsplash.com/photo-1603322327935-1a3d1f468328?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "mobile-development",
