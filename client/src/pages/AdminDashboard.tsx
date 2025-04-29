@@ -23,19 +23,19 @@ interface FormSubmission {
 export default function AdminDashboard() {
   const [, navigate] = useLocation();
   const [initialLoading, setInitialLoading] = useState(true);
-  
+
   useEffect(() => {
     const checkAuth = () => {
       const isAuth = localStorage.getItem('isAuthenticated') === 'true';
       const isAdmin = localStorage.getItem('userName') === 'Admin';
-      
+
       if (!isAuth || !isAdmin) {
         navigate('/login');
         return;
       }
       setInitialLoading(false);
     };
-    
+
     checkAuth();
   }, [navigate]);
 
@@ -48,12 +48,12 @@ export default function AdminDashboard() {
   }
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState<string>("all");
-  
+
   const { data: submissions = [], isLoading, refetch } = useQuery<FormSubmission[]>({
     queryKey: ['/api/admin/submissions'],
     queryFn: getQueryFn({ on401: "throw" }),
   });
-  
+
   const markAsViewedMutation = useMutation({
     mutationFn: async (id: number) => {
       const res = await apiRequest('PUT', `/api/admin/submissions/${id}/view`);
@@ -74,24 +74,24 @@ export default function AdminDashboard() {
       });
     },
   });
-  
+
   // Filter submissions based on active tab
   const filteredSubmissions = submissions.filter(submission => {
     if (activeTab === "all") return true;
     if (activeTab === "unread") return !submission.viewed;
     return submission.type === activeTab;
   });
-  
+
   // Count submissions by type
   const unreadCount = submissions.filter(s => !s.viewed).length;
   const contactCount = submissions.filter(s => s.type === "contact").length;
   const quoteCount = submissions.filter(s => s.type === "quote").length;
   const authCount = submissions.filter(s => s.type === "login" || s.type === "signup").length;
-  
+
   const handleMarkAsViewed = (id: number) => {
     markAsViewedMutation.mutate(id);
   };
-  
+
   const getSubmissionIcon = (type: string) => {
     switch (type) {
       case "contact": return <MessageSquare className="h-5 w-5 text-blue-500" />;
@@ -101,7 +101,7 @@ export default function AdminDashboard() {
       default: return <MessageSquare className="h-5 w-5" />;
     }
   };
-  
+
   const formatDate = (dateString: string) => {
     try {
       return formatDistanceToNow(new Date(dateString), { addSuffix: true });
@@ -109,7 +109,7 @@ export default function AdminDashboard() {
       return dateString;
     }
   };
-  
+
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -117,13 +117,13 @@ export default function AdminDashboard() {
       </div>
     );
   }
-  
+
   return (
     <div className="container max-w-7xl mx-auto mt-24 pt-16 pb-10 px-4 sm:px-6">
       <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
         Admin Dashboard
       </h1>
-      
+
       <Tabs defaultValue="all" value={activeTab} onValueChange={setActiveTab}>
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
           <TabsList className="mb-4 sm:mb-0">
@@ -149,7 +149,7 @@ export default function AdminDashboard() {
             </TabsTrigger>
           </TabsList>
         </div>
-        
+
         <TabsContent value={activeTab} className="mt-0">
           <div className="grid gap-6">
             {filteredSubmissions.length === 0 ? (
@@ -182,7 +182,7 @@ export default function AdminDashboard() {
                       </CardDescription>
                     </div>
                   </CardHeader>
-                  
+
                   <CardContent>
                     <div className="space-y-2">
                       {submission.type === "contact" && (
@@ -193,7 +193,7 @@ export default function AdminDashboard() {
                           <p><strong>Message:</strong> {submission.data.message}</p>
                         </>
                       )}
-                      
+
                       {submission.type === "quote" && (
                         <>
                           <p><strong>Name:</strong> {submission.data.name || 'N/A'}</p>
@@ -205,7 +205,7 @@ export default function AdminDashboard() {
                           <p><strong>Details:</strong> {submission.data.details || 'N/A'}</p>
                         </>
                       )}
-                      
+
                       {(submission.type === "login" || submission.type === "signup") && (
                         <>
                           <p><strong>Username:</strong> {submission.data.username}</p>
@@ -213,7 +213,7 @@ export default function AdminDashboard() {
                           {submission.data.name && <p><strong>Name:</strong> {submission.data.name}</p>}
                         </>
                       )}
-                      
+
                       <div className="flex mt-4">
                         {submission.email && (
                           <div className="flex items-center mr-4 text-sm text-muted-foreground">
@@ -221,7 +221,7 @@ export default function AdminDashboard() {
                             {submission.email}
                           </div>
                         )}
-                        
+
                         {submission.phoneNumber && (
                           <div className="flex items-center text-sm text-muted-foreground">
                             <Phone className="h-4 w-4 mr-1" />
@@ -231,7 +231,7 @@ export default function AdminDashboard() {
                       </div>
                     </div>
                   </CardContent>
-                  
+
                   <CardFooter className="flex justify-between pt-2">
                     <div className="flex items-center text-sm text-muted-foreground">
                       {submission.viewed ? (
@@ -246,7 +246,7 @@ export default function AdminDashboard() {
                         </div>
                       )}
                     </div>
-                    
+
                     <div>
                       {!submission.viewed && (
                         <Button 

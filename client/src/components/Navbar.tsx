@@ -96,6 +96,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
                 onClick={() => {
                   localStorage.removeItem('isAuthenticated');
                   localStorage.removeItem('userName');
+                  setIsAuthenticated(false);
                   navigate('/');
                 }}
               >
