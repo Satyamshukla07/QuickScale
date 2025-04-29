@@ -141,7 +141,7 @@ const Home = () => {
               <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-6">
                 Get a <span className="gradient-text">Quick Quote</span> for Your Project
               </h2>
-              <p className="text-gray-300 mb-6 text-lg">
+              <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">
                 Fill out this simple form and receive a personalized quote in less than 24 hours. Our team is ready to help you achieve your digital goals.
               </p>
               <ul className="space-y-3 mb-8">
