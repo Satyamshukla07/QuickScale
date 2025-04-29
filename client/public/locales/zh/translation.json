@@ -1,0 +1,152 @@
+{
+  "navbar": {
+    "home": "首页",
+    "about": "关于我们",
+    "services": "服务",
+    "portfolio": "作品集",
+    "testimonials": "客户见证",
+    "contact": "联系我们",
+    "dashboard": "数据分析",
+    "login": "登录",
+    "signup": "注册"
+  },
+  "home": {
+    "hero": {
+      "title": "数字卓越驱动增长",
+      "subtitle": "您的战略数字营销和有影响力的在线形象合作伙伴",
+      "cta": "开始使用",
+      "secondary_cta": "我们的服务"
+    },
+    "stats": {
+      "clients": "满意客户",
+      "projects": "完成项目",
+      "awards": "获得奖项",
+      "experience": "年经验"
+    }
+  },
+  "services": {
+    "title": "我们的服务",
+    "subtitle": "全面的数字解决方案，提升您的品牌",
+    "uiux": {
+      "title": "UI/UX设计",
+      "description": "直观的界面和无缝的用户体验，将访客转化为客户"
+    },
+    "web_dev": {
+      "title": "网站开发",
+      "description": "采用前沿技术构建的响应式、高性能网站"
+    },
+    "mobile_app": {
+      "title": "移动应用开发",
+      "description": "提供卓越用户体验的原生和跨平台应用程序"
+    },
+    "web_app": {
+      "title": "Web应用开发",
+      "description": "具有强大功能和优雅设计的可扩展Web应用程序"
+    },
+    "meta": {
+      "title": "Meta广告",
+      "description": "Facebook、Instagram和其他Meta平台上的战略社交媒体活动"
+    },
+    "pricing": {
+      "title": "价格计算器",
+      "subtitle": "估算您的项目成本",
+      "service_type": "服务类型",
+      "add_ons": "附加服务",
+      "project_size": "项目规模",
+      "pages": "页面数",
+      "duration": "时长",
+      "total": "预估总价",
+      "contact_us": "联系我们获取详细报价"
+    }
+  },
+  "about": {
+    "title": "关于我们",
+    "subtitle": "我们的旅程、使命以及QuickScale背后的团队",
+    "mission": {
+      "title": "我们的使命",
+      "description": "我们旨在通过创新的数字解决方案赋能企业，推动增长并交付可衡量的成果。"
+    },
+    "team": {
+      "title": "认识我们的团队",
+      "subtitle": "我们成功背后的专家"
+    }
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "获取免费咨询",
+    "form": {
+      "name": "您的姓名",
+      "email": "电子邮箱",
+      "phone": "电话号码",
+      "service": "感兴趣的服务",
+      "message": "您的留言",
+      "submit": "发送留言"
+    },
+    "info": {
+      "address": "地址",
+      "phone": "电话",
+      "email": "电子邮箱"
+    }
+  },
+  "dashboard": {
+    "title": "绩效仪表盘",
+    "subtitle": "跟踪您的营销活动绩效和用户互动指标",
+    "periods": {
+      "6m": "最近6个月",
+      "3m": "最近3个月",
+      "1m": "最近1个月"
+    },
+    "metrics": {
+      "visits": "总访问量",
+      "conversions": "转化次数",
+      "conversion_rate": "转化率",
+      "avg_session": "平均会话时间",
+      "previous_period": "相比上一周期"
+    },
+    "charts": {
+      "traffic": "流量表现",
+      "sources": "流量来源",
+      "devices": "设备分布",
+      "top_pages": "热门页面",
+      "engagement": "页面参与度"
+    },
+    "recommendations": {
+      "title": "AI动力推荐",
+      "mobile": {
+        "title": "优化移动体验",
+        "description": "移动端流量增加18%，但转化率低于桌面端。考虑改进移动端结账体验。"
+      },
+      "content": {
+        "title": "内容机会",
+        "description": "搜索"数字营销策略"的用户正登陆您的/services页面。创建专门解决这个主题的内容。"
+      },
+      "social": {
+        "title": "社交媒体增长",
+        "description": "Instagram比上个月带来的流量增加43%。考虑增加这个平台上的内容频率和广告支出。"
+      }
+    }
+  },
+  "footer": {
+    "company": "公司",
+    "services": "服务",
+    "contact": "联系方式",
+    "legal": {
+      "privacy": "隐私政策",
+      "terms": "服务条款",
+      "cookies": "Cookie政策"
+    },
+    "rights": "版权所有",
+    "subscribe": {
+      "title": "订阅我们的新闻通讯",
+      "placeholder": "您的电子邮箱",
+      "button": "订阅"
+    }
+  },
+  "livechat": {
+    "title": "在线客服",
+    "placeholder": "请在此输入您的留言...",
+    "send": "发送",
+    "greeting": "您好！今天我们能帮您什么？",
+    "response": "感谢您的来信！我们的团队将尽快回复您。"
+  }
+}

@@ -1,0 +1,152 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "testimonials": "Testimonials",
+    "contact": "Contact",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "signup": "Sign Up"
+  },
+  "home": {
+    "hero": {
+      "title": "Drive Growth with Digital Excellence",
+      "subtitle": "Your partner for strategic digital marketing and impactful online presence",
+      "cta": "Get Started",
+      "secondary_cta": "Our Services"
+    },
+    "stats": {
+      "clients": "Happy Clients",
+      "projects": "Projects Completed",
+      "awards": "Awards Won",
+      "experience": "Years of Experience"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive digital solutions to elevate your brand",
+    "uiux": {
+      "title": "UI/UX Design",
+      "description": "Intuitive interfaces and seamless user experiences that convert visitors into customers"
+    },
+    "web_dev": {
+      "title": "Website Development",
+      "description": "Responsive, high-performance websites built with cutting-edge technologies"
+    },
+    "mobile_app": {
+      "title": "Mobile App Development",
+      "description": "Native and cross-platform applications that deliver exceptional user experiences"
+    },
+    "web_app": {
+      "title": "Web Application Development",
+      "description": "Scalable web applications with robust functionality and elegant design"
+    },
+    "meta": {
+      "title": "Meta Advertising",
+      "description": "Strategic social media campaigns across Facebook, Instagram, and other Meta platforms"
+    },
+    "pricing": {
+      "title": "Pricing Calculator",
+      "subtitle": "Estimate your project cost",
+      "service_type": "Service Type",
+      "add_ons": "Add-ons",
+      "project_size": "Project Size",
+      "pages": "Pages",
+      "duration": "Duration",
+      "total": "Estimated Total",
+      "contact_us": "Contact us for a detailed quote"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Our journey, mission, and the team behind QuickScale",
+    "mission": {
+      "title": "Our Mission",
+      "description": "We aim to empower businesses with innovative digital solutions that drive growth and deliver measurable results."
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "subtitle": "The experts behind our success"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch for a free consultation",
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "service": "Service Interested In",
+      "message": "Your Message",
+      "submit": "Send Message"
+    },
+    "info": {
+      "address": "Address",
+      "phone": "Phone",
+      "email": "Email"
+    }
+  },
+  "dashboard": {
+    "title": "Performance Dashboard",
+    "subtitle": "Track your campaign performance and user engagement metrics",
+    "periods": {
+      "6m": "Last 6 Months",
+      "3m": "Last 3 Months",
+      "1m": "Last Month"
+    },
+    "metrics": {
+      "visits": "Total Visits",
+      "conversions": "Conversions",
+      "conversion_rate": "Conversion Rate",
+      "avg_session": "Avg. Session",
+      "previous_period": "from previous period"
+    },
+    "charts": {
+      "traffic": "Traffic Performance",
+      "sources": "Traffic Sources",
+      "devices": "Device Distribution",
+      "top_pages": "Top Pages",
+      "engagement": "Engagement by Page"
+    },
+    "recommendations": {
+      "title": "AI-Powered Recommendations",
+      "mobile": {
+        "title": "Optimize Mobile Experience",
+        "description": "Mobile traffic has increased by 18% but conversion rate is lower than desktop. Consider improving mobile checkout experience."
+      },
+      "content": {
+        "title": "Content Opportunity",
+        "description": "Users searching for \"digital marketing strategy\" are landing on your /services page. Create dedicated content addressing this topic."
+      },
+      "social": {
+        "title": "Social Media Growth",
+        "description": "Instagram is driving 43% more traffic than last month. Consider increasing content frequency and ad spend on this platform."
+      }
+    }
+  },
+  "footer": {
+    "company": "Company",
+    "services": "Services",
+    "contact": "Contact",
+    "legal": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy"
+    },
+    "rights": "All Rights Reserved",
+    "subscribe": {
+      "title": "Subscribe to Our Newsletter",
+      "placeholder": "Your email address",
+      "button": "Subscribe"
+    }
+  },
+  "livechat": {
+    "title": "Live Chat",
+    "placeholder": "Type your message here...",
+    "send": "Send",
+    "greeting": "Hello! How can we help you today?",
+    "response": "Thanks for reaching out! Our team will get back to you shortly."
+  }
+}
