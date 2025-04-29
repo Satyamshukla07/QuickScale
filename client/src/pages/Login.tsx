@@ -44,15 +44,40 @@ const Login = () => {
   
   const onSubmit = async (data: LoginFormValues) => {
     setIsSubmitting(true);
-    
-    // This is a demo - actual login would be implemented here
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Login Attempted",
-        description: "This is a demo. Actual authentication would be implemented here.",
+    try {
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password
+        }),
       });
-    }, 1500);
+
+      if (response.ok) {
+        toast({
+          title: "Success",
+          description: "Successfully logged in",
+        });
+        navigate('/admin');
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Invalid credentials",
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to login",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   return (
