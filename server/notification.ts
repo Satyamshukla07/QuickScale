@@ -60,11 +60,20 @@ export class NotificationService {
    * Store an authentication event (signup or login)
    */
   async storeAuthEvent(type: 'signup' | 'login', userData: InsertUser | Record<string, any>) {
+    // Handle different user data formats
+    let email: string | undefined;
+    
+    if ('email' in userData) {
+      email = userData.email;
+    } else if ('username' in userData) {
+      email = userData.username;
+    }
+    
     const submission: FormSubmission = {
       type,
       data: userData,
       createdAt: new Date().toISOString(),
-      email: userData.email || userData.username,
+      email,
     };
     
     return this.storeSubmission(submission);

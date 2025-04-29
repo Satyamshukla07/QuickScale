@@ -1,4 +1,4 @@
-import { users, type User, type InsertUser, contactSubmissions, type ContactSubmission, type InsertContact, portfolioProjects, type PortfolioProject, testimonials, type Testimonial } from "@shared/schema";
+import { users, type User, type InsertUser, contactSubmissions, type ContactSubmission, type InsertContact, portfolioProjects, type PortfolioProject, testimonials, type Testimonial, formSubmissions, type FormSubmission } from "@shared/schema";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -105,6 +105,43 @@ export class MemStorage implements IStorage {
   
   async getTestimonialById(id: number): Promise<Testimonial | undefined> {
     return this.testimonialsList.get(id);
+  }
+  
+  async createSubmission(submission: {
+    type: string;
+    data: Record<string, any>;
+    createdAt: string;
+    email?: string;
+    phoneNumber?: string;
+  }): Promise<FormSubmission> {
+    const id = this.submissionId++;
+    const newSubmission: FormSubmission = { 
+      id,
+      type: submission.type,
+      data: submission.data,
+      createdAt: submission.createdAt,
+      email: submission.email || '',
+      phoneNumber: submission.phoneNumber || '',
+      viewed: false 
+    };
+    this.submissions.set(id, newSubmission);
+    return newSubmission;
+  }
+  
+  async getAllSubmissions(): Promise<FormSubmission[]> {
+    return Array.from(this.submissions.values());
+  }
+  
+  async getSubmissionById(id: number): Promise<FormSubmission | undefined> {
+    return this.submissions.get(id);
+  }
+  
+  async markSubmissionAsViewed(id: number): Promise<void> {
+    const submission = this.submissions.get(id);
+    if (submission) {
+      submission.viewed = true;
+      this.submissions.set(id, submission);
+    }
   }
   
   private initializeSampleData() {

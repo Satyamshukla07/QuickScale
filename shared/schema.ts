@@ -59,8 +59,8 @@ export const formSubmissions = pgTable("form_submissions", {
   type: text("type").notNull(), // 'quote', 'contact', 'signup', 'login'
   data: jsonb("data").notNull(), // Store the entire form data as JSON
   createdAt: text("created_at").notNull(),
-  email: text("email"),
-  phoneNumber: text("phone_number"),
+  email: text("email").notNull().default(''),
+  phoneNumber: text("phone_number").notNull().default(''),
   viewed: boolean("viewed").default(false),
 });
 
