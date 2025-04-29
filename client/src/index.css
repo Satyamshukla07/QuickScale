@@ -41,27 +41,27 @@
 
 /* Light mode */
 .light {
-  --background: 0 0% 98%;
-  --foreground: 240 10% 3.9%;
-  --muted: 240 4.9% 96.1%;
-  --muted-foreground: 240 3.8% 46.1%;
-  --popover: 0 0% 98%;
-  --popover-foreground: 240 10% 3.9%;
-  --card: 0 0% 98%;
-  --card-foreground: 240 10% 3.9%;
-  --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215 25% 27%;
+  --popover: 210 40% 98%;
+  --popover-foreground: 222 47% 11%;
+  --card: 210 40% 98%;
+  --card-foreground: 222 47% 11%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
   --primary: 207 90% 54%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 240 4.8% 95.9%;
-  --secondary-foreground: 240 5.9% 10%;
-  --accent: 240 4.8% 95.9%;
-  --accent-foreground: 240 5.9% 10%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222 47% 11%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222 47% 11%;
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
-  --ring: 240 5.9% 10%;
-  --dark-bg: 220 14% 96%;
-  --light-text: 220 50% 3%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 215 20.2% 65.1%;
+  --dark-bg: 210 40% 96.1%;
+  --light-text: 222 47% 11%;
   
   /* Chart colors */
   --chart-1: var(--electric-blue);
@@ -98,11 +98,11 @@ body {
 
 /* Light mode background */
 .light body {
-  background-color: hsl(0 0% 98%);
+  background-color: hsl(210 40% 98%);
   background-image: 
-    radial-gradient(circle at 15% 20%, rgba(0, 172, 209, 0.08) 0%, transparent 25%),
-    radial-gradient(circle at 85% 60%, rgba(162, 67, 208, 0.08) 0%, transparent 25%),
-    radial-gradient(circle at 50% 80%, rgba(209, 46, 146, 0.06) 0%, transparent 20%),
+    radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 25%),
+    radial-gradient(circle at 85% 60%, rgba(124, 58, 237, 0.12) 0%, transparent 25%),
+    radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.10) 0%, transparent 20%),
     url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
