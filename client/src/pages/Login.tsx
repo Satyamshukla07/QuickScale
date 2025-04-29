@@ -57,7 +57,7 @@ const Login = () => {
       } else {
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('userName', data.email.split('@')[0]);
-        navigate('/dashboard');
+        navigate('/');
         toast({
           title: "Success",
           description: "Successfully logged in",
