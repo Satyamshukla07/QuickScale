@@ -19,6 +19,18 @@ export interface IStorage {
   // Testimonials
   getTestimonials(): Promise<Testimonial[]>;
   getTestimonialById(id: number): Promise<Testimonial | undefined>;
+  
+  // Form submissions (for notifications)
+  createSubmission(submission: {
+    type: string;
+    data: Record<string, any>;
+    createdAt: string;
+    email?: string;
+    phoneNumber?: string;
+  }): Promise<FormSubmission>;
+  getAllSubmissions(): Promise<FormSubmission[]>;
+  getSubmissionById(id: number): Promise<FormSubmission | undefined>;
+  markSubmissionAsViewed(id: number): Promise<void>;
 }
 
 export class MemStorage implements IStorage {
@@ -26,22 +38,26 @@ export class MemStorage implements IStorage {
   private contacts: Map<number, ContactSubmission>;
   private projects: Map<number, PortfolioProject>;
   private testimonialsList: Map<number, Testimonial>;
+  private submissions: Map<number, FormSubmission>;
   
   currentId: number;
   contactId: number;
   projectId: number;
   testimonialId: number;
+  submissionId: number;
 
   constructor() {
     this.users = new Map();
     this.contacts = new Map();
     this.projects = new Map();
     this.testimonialsList = new Map();
+    this.submissions = new Map();
     
     this.currentId = 1;
     this.contactId = 1;
     this.projectId = 1;
     this.testimonialId = 1;
+    this.submissionId = 1;
     
     // Initialize with sample portfolio projects
     this.initializeSampleData();

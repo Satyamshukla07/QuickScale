@@ -1,4 +1,4 @@
-import { pgTable, text, serial, integer, boolean } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, boolean, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -53,7 +53,22 @@ export const testimonials = pgTable("testimonials", {
   imageUrl: text("image_url"),
 });
 
+// Form submissions table to store all form data
+export const formSubmissions = pgTable("form_submissions", {
+  id: serial("id").primaryKey(),
+  type: text("type").notNull(), // 'quote', 'contact', 'signup', 'login'
+  data: jsonb("data").notNull(), // Store the entire form data as JSON
+  createdAt: text("created_at").notNull(),
+  email: text("email"),
+  phoneNumber: text("phone_number"),
+  viewed: boolean("viewed").default(false),
+});
+
+export const insertFormSubmissionSchema = createInsertSchema(formSubmissions);
+
 export type InsertContact = z.infer<typeof insertContactSchema>;
 export type ContactSubmission = typeof contactSubmissions.$inferSelect;
 export type PortfolioProject = typeof portfolioProjects.$inferSelect;
 export type Testimonial = typeof testimonials.$inferSelect;
+export type FormSubmission = typeof formSubmissions.$inferSelect;
+export type InsertFormSubmission = z.infer<typeof insertFormSubmissionSchema>;
