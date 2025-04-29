@@ -17,7 +17,7 @@ const GlassCard = ({
   return (
     <div
       className={cn(
-        "dark:bg-white/10 bg-white/60 backdrop-blur-xl border dark:border-white/20 border-gray-200/80 rounded-xl shadow-lg",
+        "dark:bg-white/10 bg-white/60 backdrop-blur-xl border dark:border-white/20 border-gray-200/80 rounded-xl shadow-lg relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/5 before:to-transparent before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500",
         hoverEffect && "hover:transform hover:-translate-y-1 hover:shadow-electric transition-all duration-300 dark:hover:bg-white/15",
         className
       )}
