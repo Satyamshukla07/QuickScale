@@ -41,25 +41,25 @@
 
 /* Light mode */
 .light {
-  --background: 0 0% 100%;
-  --foreground: 224 71.4% 4.1%;
-  --muted: 220 14.3% 95.9%;
-  --muted-foreground: 220 8.9% 46.1%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 224 71.4% 4.1%;
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  --muted: 215 16% 90%;
+  --muted-foreground: 215 25% 27%;
+  --popover: 210 40% 98%;
+  --popover-foreground: 222 47% 11%;
   --card: 0 0% 100%;
-  --card-foreground: 224 71.4% 4.1%;
-  --border: 220 13% 91%;
-  --input: 220 13% 91%;
-  --primary: 221.2 83.2% 53.3%;
+  --card-foreground: 222 47% 11%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --primary: 222.2 47% 11%;
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96.1%;
   --secondary-foreground: 222 47% 11%;
-  --accent: 210 40% 90%;
-  --accent-foreground: 222 47% 20%;
+  --accent: 210 40% 94%;
+  --accent-foreground: 222 47% 11%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
-  --ring: 215 20.2% 65.1%;
+  --ring: 222 47% 11%;
   --dark-bg: 210 40% 96.1%;
   --light-text: 222 47% 11%;
   
@@ -100,9 +100,9 @@ body {
 .light body {
   background-color: hsl(210 40% 98%);
   background-image: 
-    radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 25%),
-    radial-gradient(circle at 85% 60%, rgba(124, 58, 237, 0.12) 0%, transparent 25%),
-    radial-gradient(circle at 50% 80%, rgba(236, 72, 153, 0.10) 0%, transparent 20%),
+    radial-gradient(circle at 15% 20%, rgba(0, 0, 0, 0.03) 0%, transparent 25%),
+    radial-gradient(circle at 85% 60%, rgba(0, 0, 0, 0.03) 0%, transparent 25%),
+    radial-gradient(circle at 50% 80%, rgba(0, 0, 0, 0.03) 0%, transparent 20%),
     url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
