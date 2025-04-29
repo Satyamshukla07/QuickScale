@@ -14,7 +14,7 @@ const Footer = () => {
               <span className="text-electric-blue mr-1">
                 <Bolt className="h-6 w-6" />
               </span>
-              Quickscale
+              QuickScale
             </Link>
             <p className="text-gray-400 mb-6">
               Accelerating digital presence for businesses worldwide with innovative marketing strategies.
@@ -130,7 +130,7 @@ const Footer = () => {
         
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Quickscale. All rights reserved.
+            &copy; {new Date().getFullYear()} QuickScale. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-gray-400 hover:text-electric-blue transition duration-300 text-sm">

@@ -47,7 +47,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
           <span className="text-electric-blue mr-1">
             <Bolt className="h-6 w-6" />
           </span>
-          Quickscale
+          QuickScale
         </Link>
         
         {/* Desktop Menu */}

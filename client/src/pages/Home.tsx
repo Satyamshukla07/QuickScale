@@ -28,7 +28,7 @@ const Home = () => {
               transition={{ duration: 0.7 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight mb-6">
-                Accelerate Your <span className="gradient-text">Digital Presence</span> with Quickscale!
+                Accelerate Your <span className="gradient-text">Digital Presence</span> with QuickScale!
               </h1>
               <p className="text-xl text-gray-300 mb-8">
                 We transform your brand's digital footprint with cutting-edge marketing strategies tailored for the modern world.
