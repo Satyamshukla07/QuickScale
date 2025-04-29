@@ -45,9 +45,6 @@ const Login = () => {
   const onSubmit = async (data: LoginFormValues) => {
     setIsSubmitting(true);
     try {
-      // Use the admin credentials defined in storage.ts
-      // email: admin@example.com
-      // password: admin123
       if (data.email === 'admin@example.com' && data.password === 'admin123') {
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('userName', 'Admin');
@@ -55,7 +52,7 @@ const Login = () => {
           title: "Success",
           description: "Successfully logged in as admin",
         });
-        navigate('/admin');
+        navigate('/admin-dashboard');
       } else {
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('userName', data.email.split('@')[0]);
@@ -64,15 +61,16 @@ const Login = () => {
           title: "Success",
           description: "Successfully logged in",
         });
-        return;
-      }
-      toast({
-        variant: "destructive",
-          title: "Error",
-          description: "Invalid credentials. Try admin@example.com / admin123",
-        });
       }
     } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to login",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
       toast({
         variant: "destructive",
         title: "Error",

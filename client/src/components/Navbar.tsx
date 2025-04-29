@@ -17,6 +17,11 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
   const [location, navigate] = useLocation();
   const { t } = useTranslation();
   const { primaryInterest } = useBrowsing();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    setIsAuthenticated(localStorage.getItem('isAuthenticated') === 'true');
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
