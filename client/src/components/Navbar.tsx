@@ -75,21 +75,48 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
           <PersonalizedCTA variant="compact" />
         </div>
         
-        {/* Login/Signup */}
+        {/* Login/Signup/User Menu */}
         <div className="hidden md:flex items-center space-x-4">
-          <Button 
-            variant="ghost" 
-            className="text-light-text hover:text-electric-blue transition duration-300"
-            onClick={() => openAuthModal('login')}
-          >
-            {t('navbar.login')}
-          </Button>
-          <Button 
-            className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
-            onClick={() => openAuthModal('signup')}
-          >
-            {t('navbar.signup')}
-          </Button>
+          {isAuthenticated ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="relative">
+                  <User className="h-5 w-5 mr-2" />
+                  {userName || 'User'}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end">
+                <DropdownMenuItem onClick={() => navigate('/dashboard')}>
+                  Dashboard
+                </DropdownMenuItem>
+                {isAdmin && (
+                  <DropdownMenuItem onClick={() => navigate('/admin')}>
+                    Admin Dashboard
+                  </DropdownMenuItem>
+                )}
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleLogout}>
+                  Logout
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <>
+              <Button 
+                variant="ghost" 
+                className="text-light-text hover:text-electric-blue transition duration-300"
+                onClick={() => openAuthModal('login')}
+              >
+                {t('navbar.login')}
+              </Button>
+              <Button 
+                className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
+                onClick={() => openAuthModal('signup')}
+              >
+                {t('navbar.signup')}
+              </Button>
+            </>
+          )}
         </div>
         
         {/* Mobile Menu Toggle */}

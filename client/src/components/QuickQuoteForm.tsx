@@ -53,23 +53,35 @@ export default function QuickQuoteForm() {
   // For demonstration purposes, just simulate a submission
   const onSubmit = async (data: QuickQuoteFormValues) => {
     setSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Form submitted:", data);
-      setSubmitting(false);
-      
-      // Show success toast
-      toast({
-        title: "Quote Request Sent!",
-        description: "We'll get back to you within 24 hours.",
-        variant: "default",
+    try {
+      const response = await fetch('/api/admin/submissions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ type: 'quote', data }),
       });
-      
-      // Reset form and go back to step 1
-      form.reset();
-      setStep(1);
-    }, 1500);
+
+      if (response.ok) {
+        toast({
+          title: "Quote Request Sent!",
+          description: "We'll get back to you within 24 hours.",
+          variant: "default",
+        });
+        form.reset();
+        setStep(1);
+      } else {
+        throw new Error('Failed to submit');
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to submit quote request. Please try again.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   // Services list
@@ -98,9 +110,9 @@ export default function QuickQuoteForm() {
     const fieldsToValidate: (keyof QuickQuoteFormValues)[] = 
       step === 1 ? ["name"] : 
       step === 2 ? ["email"] : ["service", "budget"];
-      
+
     const isValid = await form.trigger(fieldsToValidate);
-    
+
     if (isValid) {
       setStep(Math.min(step + 1, totalSteps));
     }
@@ -114,7 +126,7 @@ export default function QuickQuoteForm() {
   return (
     <div className="glass p-6 rounded-lg shadow-glow">
       <h3 className="text-xl font-bold mb-4 text-center">Get a Free Quote</h3>
-      
+
       {/* Progress indicators */}
       <div className="flex justify-between mb-6">
         {[1, 2, 3].map((stepNumber) => (
@@ -145,7 +157,7 @@ export default function QuickQuoteForm() {
           </div>
         ))}
       </div>
-      
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           {/* Step 1: Name */}
@@ -171,7 +183,7 @@ export default function QuickQuoteForm() {
               />
             </motion.div>
           )}
-          
+
           {/* Step 2: Email */}
           {step === 2 && (
             <motion.div
@@ -200,7 +212,7 @@ export default function QuickQuoteForm() {
               />
             </motion.div>
           )}
-          
+
           {/* Step 3: Service and Budget */}
           {step === 3 && (
             <motion.div
@@ -237,7 +249,7 @@ export default function QuickQuoteForm() {
                   </FormItem>
                 )}
               />
-              
+
               <FormField
                 control={form.control}
                 name="budget"
@@ -267,7 +279,7 @@ export default function QuickQuoteForm() {
               />
             </motion.div>
           )}
-          
+
           {/* Navigation buttons */}
           <div className="flex justify-between mt-8">
             {step > 1 ? (
@@ -282,7 +294,7 @@ export default function QuickQuoteForm() {
             ) : (
               <div></div> // Empty div to maintain flex spacing
             )}
-            
+
             {step < totalSteps ? (
               <Button 
                 type="button" 
@@ -315,3 +327,15 @@ export default function QuickQuoteForm() {
     </div>
   );
 }
+
+
+// Placeholder for Dashboard and AdminDashboard components with padding
+const Dashboard = () => ( <div style={{ paddingTop: '64px' }}>{/* Dashboard content here */}</div> );
+const AdminDashboard = () => ( <div style={{ paddingTop: '64px' }}>{/* Admin Dashboard content here */}</div> );
+
+// Placeholder for Navbar with logout
+const Navbar = () => (
+  <nav>
+    <button>Logout</button> {/* Add actual logout logic here */}
+  </nav>
+);
