@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -22,12 +21,11 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
   );
 
   useEffect(() => {
-    const checkAuth = () => {
+    const handleStorageChange = () => {
       setIsAuthenticated(localStorage.getItem('isAuthenticated') === 'true');
     };
-    
-    window.addEventListener('storage', checkAuth);
-    return () => window.removeEventListener('storage', checkAuth);
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
   useEffect(() => {
@@ -68,7 +66,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
           </span>
           QuickScale
         </Link>
-        
+
         {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           {navLinks.map((link) => (
@@ -82,12 +80,12 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
             </Link>
           ))}
         </div>
-        
+
         {/* Personalized CTA - Desktop */}
         <div className="hidden md:block mx-2">
           <PersonalizedCTA variant="compact" />
         </div>
-        
+
         {/* User Menu */}
         <div className="hidden md:flex items-center space-x-4">
           {isAuthenticated ? (
@@ -125,7 +123,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
             </>
           )}
         </div>
-        
+
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
           <Button variant="ghost" className="text-light-text focus:outline-none" onClick={toggleMobileMenu}>
@@ -135,7 +133,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
           </Button>
         </div>
       </div>
-      
+
       {/* Mobile Menu */}
       <div className={`md:hidden absolute w-full glass py-4 px-4 mt-2 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 pointer-events-none'}`}>
         <div className="flex flex-col space-y-4">
@@ -153,7 +151,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
           <div className="my-3">
             <PersonalizedCTA variant="compact" />
           </div>
-          
+
           <hr className="border-gray-700" />
           <div className="flex space-x-4">
             <Button 

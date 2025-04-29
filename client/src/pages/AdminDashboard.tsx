@@ -23,7 +23,6 @@ interface FormSubmission {
 export default function AdminDashboard() {
   const [, navigate] = useLocation();
   const [initialLoading, setInitialLoading] = useState(true);
-  const [, navigate] = useLocation();
   
   useEffect(() => {
     const checkAuth = () => {
