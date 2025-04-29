@@ -85,17 +85,17 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
 
         {/* User Menu */}
         <div className="hidden md:flex items-center space-x-4">
-          {isAuthenticated ? (
+          {localStorage.getItem('isAuthenticated') === 'true' ? (
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" onClick={() => navigate(localStorage.getItem('userName') === 'Admin' ? '/admin-dashboard' : '/dashboard')}>
-                {localStorage.getItem('userName') || 'Profile'}
+              <Button variant="ghost" onClick={() => navigate(localStorage.getItem('userEmail') === 'admin@example.com' ? '/admin-dashboard' : '/dashboard')}>
+                {localStorage.getItem('userEmail') ? localStorage.getItem('userEmail').split('@')[0] : 'Profile'}
               </Button>
               <Button 
                 variant="ghost"
                 className="text-light-text hover:text-electric-blue transition duration-300"
                 onClick={() => {
                   localStorage.removeItem('isAuthenticated');
-                  localStorage.removeItem('userName');
+                  localStorage.removeItem('userEmail');
                   setIsAuthenticated(false);
                   navigate('/');
                 }}

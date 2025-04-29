@@ -41,7 +41,7 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
           description: "Successfully logged in as admin",
         });
         onClose();
-        window.location.href = '/admin';
+        window.location.href = '/admin-dashboard';
       } else {
         toast({
           variant: "destructive",
