@@ -7,6 +7,7 @@ import GlassCard from "@/components/GlassCard";
 import CounterAnimation from "@/components/CounterAnimation";
 import LogoCarousel from "@/components/ui/logo-carousel";
 import QuickQuoteForm from "@/components/QuickQuoteForm";
+import PersonalizedCTA from "@/components/PersonalizedCTA";
 import { SERVICES, TEAM_MEMBERS, TIMELINE } from "@/lib/constants";
 
 const Home = () => {
@@ -506,6 +507,41 @@ const Home = () => {
                 </Button>
               </Link>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Personalized CTA Section */}
+      <section className="py-20 bg-dark-bg relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute inset-0 opacity-10 bg-noise"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-electric-blue/5 blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-neon-purple/5 blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <motion.div
+            className="text-center mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl font-bold font-poppins mb-4">
+              Personalized <span className="gradient-text">Recommendations</span> For You
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Based on your interests, we've selected the perfect next steps to help you achieve your digital goals.
+            </p>
+          </motion.div>
+          
+          <motion.div
+            className="max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <PersonalizedCTA showToast={true} />
           </motion.div>
         </div>
       </section>
