@@ -105,7 +105,9 @@ const Services = () => {
         </div>
       </section>
       
-      <PriceCalculator />
+      <section className="py-24 bg-gradient-to-b from-dark-bg to-black/90">
+        <PriceCalculator />
+      </section>
     </>
   );
 };

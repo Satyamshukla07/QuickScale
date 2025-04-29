@@ -85,7 +85,7 @@ export default function LiveChat() {
     <>
       {/* Chat button */}
       <motion.button
-        className="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-neon-purple text-white shadow-lg flex items-center justify-center z-50 hover:bg-electric-blue transition-colors duration-300"
+        className="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-neon-purple text-white shadow-lg shadow-neon-purple/30 flex items-center justify-center z-[100] hover:bg-electric-blue transition-colors duration-300"
         onClick={() => setIsOpen(true)}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -100,7 +100,7 @@ export default function LiveChat() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 w-80 sm:w-96 h-96 bg-dark-bg flex flex-col rounded-xl shadow-2xl z-50 overflow-hidden glass"
+            className="fixed bottom-24 right-6 w-80 sm:w-96 h-96 bg-dark-bg flex flex-col rounded-xl shadow-2xl shadow-neon-purple/20 z-[100] overflow-hidden glass"
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
