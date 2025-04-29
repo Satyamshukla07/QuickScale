@@ -58,7 +58,7 @@ const Home = () => {
               {/* Decorative elements */}
               <div className="absolute -left-8 top-1/4 w-16 h-16 rounded-full bg-electric-blue/20 blur-xl animate-float-slow"></div>
               <div className="absolute -right-5 bottom-1/4 w-20 h-20 rounded-full bg-neon-purple/20 blur-xl animate-float-reverse"></div>
-              
+
               <div className="relative rounded-lg overflow-hidden shadow-2xl gradient-border">
                 <img 
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
@@ -66,7 +66,7 @@ const Home = () => {
                   className="w-full h-auto object-cover rounded-lg z-10 relative"
                 />
               </div>
-              
+
               <motion.div 
                 className="absolute -bottom-16 -left-16 glass p-5 rounded-lg shadow-electric hidden md:block animate-float z-20"
                 initial={{ opacity: 0, x: -20 }}
@@ -83,7 +83,7 @@ const Home = () => {
                   </div>
                 </div>
               </motion.div>
-              
+
               <motion.div 
                 className="absolute -top-16 -right-16 glass p-5 rounded-lg shadow-neon hidden md:block animate-float-reverse z-20"
                 initial={{ opacity: 0, x: 20 }}
@@ -100,7 +100,7 @@ const Home = () => {
                   </div>
                 </div>
               </motion.div>
-              
+
               {/* Social proof snippet */}
               <motion.div 
                 className="absolute bottom-5 right-5 glass p-3 rounded-lg shadow-pink hidden md:block animate-float"
@@ -128,7 +128,7 @@ const Home = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-electric-blue/5 via-neon-purple/5 to-neon-teal/5 opacity-70"></div>
         <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-neon-pink/5 blur-2xl"></div>
         <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-electric-blue/5 blur-2xl"></div>
-        
+
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <motion.div
@@ -162,7 +162,7 @@ const Home = () => {
                 ))}
               </ul>
             </motion.div>
-            
+
             <motion.div
               className="md:w-1/2"
               initial={{ opacity: 0, y: 30 }}
@@ -182,7 +182,7 @@ const Home = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-electric-blue/5 via-neon-teal/5 to-neon-purple/5 opacity-70"></div>
         <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-neon-pink/5 blur-2xl"></div>
         <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-electric-blue/5 blur-2xl"></div>
-        
+
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             className="text-center mb-16"
@@ -198,7 +198,7 @@ const Home = () => {
               We've helped businesses across industries achieve remarkable growth and digital transformation.
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -218,7 +218,7 @@ const Home = () => {
               </motion.div>
             ))}
           </div>
-          
+
           {/* Call-to-action button */}
           <motion.div 
             className="mt-16 text-center"
@@ -242,7 +242,7 @@ const Home = () => {
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-electric-blue/5 via-neon-purple/5 to-neon-teal/5 opacity-70"></div>
         <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-neon-purple/10 blur-3xl"></div>
         <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-electric-blue/10 blur-3xl"></div>
-        
+
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             className="text-center mb-16"
@@ -258,7 +258,7 @@ const Home = () => {
               Comprehensive digital solutions to help your business thrive in the digital landscape.
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {SERVICES.slice(0, 6).map((service, index) => {
               // Map icon names to imported icon components
@@ -266,7 +266,7 @@ const Home = () => {
                 Instagram, PenTool, Search, BarChart3, Palette, Code, Smartphone, Globe, AtSign
               };
               const IconComponent = iconMap[service.icon];
-              
+
               return (
                 <motion.div
                   key={index}
@@ -285,7 +285,7 @@ const Home = () => {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                     </div>
-                    
+
                     {/* Content */}
                     <div className="p-6 flex flex-col flex-grow">
                       <div className={`text-${service.color === "blue" ? "electric-blue" : service.color === "purple" ? "neon-purple" : service.color === "teal" ? "neon-teal" : "neon-pink"} mb-4`}>
@@ -299,7 +299,7 @@ const Home = () => {
               );
             })}
           </div>
-          
+
           <motion.div 
             className="mt-12 text-center"
             initial={{ opacity: 0, y: 20 }}
@@ -315,12 +315,12 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
-      
+
       {/* About Us Section */}
       <section className="py-28 bg-dark-bg relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute inset-0 opacity-20 bg-dots"></div>
-        
+
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             className="text-center mb-16"
@@ -336,7 +336,7 @@ const Home = () => {
               We're a team of passionate digital experts on a mission to transform brands.
             </p>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* About Us Content */}
             <motion.div
@@ -350,7 +350,7 @@ const Home = () => {
                 <p className="text-gray-300 mb-6">
                   At QuickScale, we blend creativity with data-driven strategies to deliver exceptional digital experiences. Our team of experts is dedicated to helping businesses of all sizes establish a powerful online presence and achieve sustainable growth.
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <div className="text-center">
                     <div className="w-14 h-14 rounded-full bg-electric-blue/20 flex items-center justify-center mx-auto mb-4">
@@ -359,7 +359,7 @@ const Home = () => {
                     <h4 className="font-bold mb-1">Fast Delivery</h4>
                     <p className="text-gray-400 text-sm">Quick turnaround without compromising quality</p>
                   </div>
-                  
+
                   <div className="text-center">
                     <div className="w-14 h-14 rounded-full bg-neon-purple/20 flex items-center justify-center mx-auto mb-4">
                       <Building className="text-neon-purple h-7 w-7" />
@@ -367,7 +367,7 @@ const Home = () => {
                     <h4 className="font-bold mb-1">Experienced Team</h4>
                     <p className="text-gray-400 text-sm">Industry veterans with proven success records</p>
                   </div>
-                  
+
                   <div className="text-center">
                     <div className="w-14 h-14 rounded-full bg-neon-teal/20 flex items-center justify-center mx-auto mb-4">
                       <TrendingUp className="text-neon-teal h-7 w-7" />
@@ -376,7 +376,7 @@ const Home = () => {
                     <p className="text-gray-400 text-sm">Focused on metrics that matter to your business</p>
                   </div>
                 </div>
-                
+
                 <Link href="/about">
                   <Button className="w-full bg-electric-blue hover:bg-neon-purple text-white font-medium py-4 rounded-md transition duration-300">
                     Learn More About Us
@@ -384,7 +384,7 @@ const Home = () => {
                 </Link>
               </GlassCard>
             </motion.div>
-            
+
             {/* Timeline */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
@@ -394,7 +394,7 @@ const Home = () => {
               className="flex flex-col justify-center"
             >
               <h3 className="text-2xl font-bold font-poppins mb-6 text-neon-purple">Our Journey</h3>
-              
+
               <div className="relative pl-8 border-l-2 border-neon-purple">
                 {TIMELINE.map((item, index) => (
                   <motion.div
@@ -413,7 +413,7 @@ const Home = () => {
                   </motion.div>
                 ))}
               </div>
-              
+
               {/* Team preview */}
               <motion.div
                 className="mt-8 glass p-6 rounded-xl relative overflow-hidden"
@@ -444,12 +444,12 @@ const Home = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Clients Section */}
       <section className="py-28 bg-dark-bg relative overflow-hidden">
         {/* Background decorations */}
         <div className="absolute inset-0 opacity-20 bg-dots"></div>
-        
+
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             className="text-center mb-16"
@@ -465,11 +465,11 @@ const Home = () => {
               We're proud to partner with innovative companies across all industries and sizes.
             </p>
           </motion.div>
-          
+
           <div className="glass p-8 rounded-xl max-w-5xl mx-auto mb-16">
             <LogoCarousel />
           </div>
-          
+
           {/* Testimonial preview */}
           <motion.div
             className="max-w-4xl mx-auto mt-16 glass p-8 rounded-xl relative overflow-hidden"
@@ -480,7 +480,7 @@ const Home = () => {
           >
             {/* Decorative gradient accent */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-electric-blue via-neon-purple to-neon-pink"></div>
-            
+
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
                 <img 
@@ -499,7 +499,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="mt-6 text-center">
               <Link href="/testimonials">
                 <Button variant="link" className="text-electric-blue hover:text-neon-purple">
@@ -517,7 +517,7 @@ const Home = () => {
         <div className="absolute inset-0 opacity-10 bg-noise"></div>
         <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-electric-blue/5 blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-neon-purple/5 blur-3xl"></div>
-        
+
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             className="text-center mb-8"
@@ -533,7 +533,7 @@ const Home = () => {
               Based on your interests, we've selected the perfect next steps to help you achieve your digital goals.
             </p>
           </motion.div>
-          
+
           <motion.div
             className="max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
