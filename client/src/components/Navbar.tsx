@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -75,23 +76,21 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
           <PersonalizedCTA variant="compact" />
         </div>
         
-        {/* Login/Signup/User Menu */}
+        {/* Login/Signup Menu */}
         <div className="hidden md:flex items-center space-x-4">
-              <Button 
-                variant="ghost" 
-                className="text-light-text hover:text-electric-blue transition duration-300"
-                onClick={() => openAuthModal('login')}
-              >
-                {t('navbar.login')}
-              </Button>
-              <Button 
-                className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
-                onClick={() => openAuthModal('signup')}
-              >
-                {t('navbar.signup')}
-              </Button>
-            </>
-          )}
+          <Button 
+            variant="ghost" 
+            className="text-light-text hover:text-electric-blue transition duration-300"
+            onClick={() => openAuthModal('login')}
+          >
+            {t('navbar.login')}
+          </Button>
+          <Button 
+            className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
+            onClick={() => openAuthModal('signup')}
+          >
+            {t('navbar.signup')}
+          </Button>
         </div>
         
         {/* Mobile Menu Toggle */}
