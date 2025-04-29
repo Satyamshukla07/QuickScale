@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ChartPieIcon, BarChartIcon, Instagram, PenTool, Search, BarChart3, Palette, Code, Smartphone, Globe, AtSign, ArrowRight, Zap, Building, TrendingUp } from "lucide-react";
+import { ChartPieIcon, BarChartIcon, Instagram, PenTool, Search, BarChart3, Palette, Code, Smartphone, Globe, AtSign, ArrowRight, Zap, Building, TrendingUp, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import GlassCard from "@/components/GlassCard";
 import CounterAnimation from "@/components/CounterAnimation";
 import LogoCarousel from "@/components/ui/logo-carousel";
+import QuickQuoteForm from "@/components/QuickQuoteForm";
 import { SERVICES, TEAM_MEMBERS, TIMELINE } from "@/lib/constants";
 
 const Home = () => {
@@ -115,6 +116,60 @@ const Home = () => {
                   <p className="text-xs text-white font-medium">35+ joined this week</p>
                 </div>
               </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Quote Form Section */}
+      <section className="py-20 bg-dark-bg relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-electric-blue/5 via-neon-purple/5 to-neon-teal/5 opacity-70"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-neon-pink/5 blur-2xl"></div>
+        <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-electric-blue/5 blur-2xl"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+            <motion.div
+              className="md:w-1/2"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-6">
+                Get a <span className="gradient-text">Quick Quote</span> for Your Project
+              </h2>
+              <p className="text-gray-300 mb-6 text-lg">
+                Fill out this simple form and receive a personalized quote in less than 24 hours. Our team is ready to help you achieve your digital goals.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {["Free consultation and quote", "Multi-step progress tracking", "No obligation pricing", "Personalized service recommendations"].map((item, index) => (
+                  <motion.li 
+                    key={index}
+                    className="flex items-center gap-3"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.1 * index }}
+                  >
+                    <div className="w-6 h-6 rounded-full bg-electric-blue/20 flex items-center justify-center">
+                      <Check className="h-3 w-3 text-electric-blue" />
+                    </div>
+                    <span className="text-gray-200">{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+            
+            <motion.div
+              className="md:w-1/2"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <QuickQuoteForm />
             </motion.div>
           </div>
         </div>
