@@ -15,7 +15,6 @@ import Navbar from "@/components/Navbar";
 
 const ProtectedAdminRoute = ({ component: Component }: { component: React.ComponentType }) => {
   const [, navigate] = useLocation();
-  const [isAuthorized, setIsAuthorized] = useState(false);
   
   useEffect(() => {
     const isAuth = localStorage.getItem('isAuthenticated') === 'true';
@@ -23,12 +22,14 @@ const ProtectedAdminRoute = ({ component: Component }: { component: React.Compon
     
     if (!isAuth || !isAdmin) {
       navigate('/login');
-    } else {
-      setIsAuthorized(true);
+      return;
     }
   }, [navigate]);
 
-  if (!isAuthorized) {
+  const isAuth = localStorage.getItem('isAuthenticated') === 'true';
+  const isAdmin = localStorage.getItem('userEmail') === 'admin@example.com';
+
+  if (!isAuth || !isAdmin) {
     return null;
   }
 

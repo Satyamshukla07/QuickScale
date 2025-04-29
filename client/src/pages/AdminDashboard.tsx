@@ -27,9 +27,9 @@ export default function AdminDashboard() {
   useEffect(() => {
     const checkAuth = () => {
       const isAuth = localStorage.getItem('isAuthenticated') === 'true';
-      const email = localStorage.getItem('userEmail');
-      
-      if (!isAuth || email !== 'admin@example.com') {
+      const isAdmin = localStorage.getItem('userEmail') === 'admin@example.com';
+
+      if (!isAuth || !isAdmin) {
         navigate('/login');
         return;
       }
