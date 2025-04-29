@@ -44,25 +44,25 @@
   --background: 0 0% 100%;
   --foreground: 224 71.4% 4.1%;
   --muted: 220 14.3% 95.9%;
-  --muted-foreground: 220 8.9% 25%;
+  --muted-foreground: 220 8.9% 15%;
   --popover: 0 0% 100%;
   --popover-foreground: 224 71.4% 4.1%;
   --card: 0 0% 100%;
   --card-foreground: 224 71.4% 4.1%;
   --border: 220 13% 91%;
   --input: 220 13% 91%;
-  --primary: 221.2 83.2% 25%;
+  --primary: 221.2 83.2% 20%;
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96.1%;
   --secondary-foreground: 222 47% 15%;
   --accent: 210 40% 90%;
-  --accent-foreground: 222 47% 20%;
+  --accent-foreground: 222 47% 15%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
   --ring: 224 71.4% 4.1%;
   --dark-bg: 210 40% 96.1%;
-  --light-text: 222 47% 11%;
-  
+  --light-text: 222 47% 8%;
+
   /* Chart colors */
   --chart-1: var(--electric-blue);
   --chart-2: var(--neon-purple);
@@ -84,6 +84,7 @@
 body {
   @apply font-montserrat antialiased bg-background text-foreground;
   overflow-x: hidden;
+  backdrop-filter: blur(10px) saturate(180%);
 }
 
 /* Dark mode background */
@@ -104,6 +105,7 @@ body {
     radial-gradient(circle at 85% 60%, rgba(0, 0, 0, 0.03) 0%, transparent 25%),
     radial-gradient(circle at 50% 80%, rgba(0, 0, 0, 0.03) 0%, transparent 20%),
     url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  backdrop-filter: blur(10px) saturate(180%);
 }
 
 @layer base {
@@ -117,12 +119,12 @@ body {
   .bg-dots {
     background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.22676 0C1.91374 0 2.45351 0.539773 2.45351 1.22676C2.45351 1.91374 1.91374 2.45351 1.22676 2.45351C0.539773 2.45351 0 1.91374 0 1.22676C0 0.539773 0.539773 0 1.22676 0Z' fill='rgba(255,255,255,0.05)'%3E%3C/path%3E%3C/svg%3E");
   }
-  
+
   /* Glassmorphism */
   .glass {
     @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-lg relative overflow-hidden;
   }
-  
+
   .glass::before {
     content: '';
     position: absolute;
@@ -140,28 +142,28 @@ body {
     transition: all 0.6s ease;
     opacity: 0;
   }
-  
+
   .glass:hover::before {
     animation: shine 1.5s ease;
   }
-  
+
   .glass-card {
     @apply glass rounded-xl transition-all duration-300;
   }
-  
+
   .glass-card:hover {
     @apply transform -translate-y-1;
     box-shadow: 
       0 10px 25px -5px rgba(0, 210, 255, 0.3),
       0 5px 15px -8px rgba(0, 210, 255, 0.2);
   }
-  
+
   /* Gradient borders */
   .gradient-border {
     position: relative;
     border-radius: 0.75rem;
   }
-  
+
   .gradient-border::before {
     content: '';
     position: absolute;
@@ -175,50 +177,50 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   .gradient-border:hover::before {
     opacity: 1;
   }
-  
+
   /* Navigation underline effect */
   .nav-link {
     @apply relative;
   }
-  
+
   .nav-link::after {
     @apply content-[''] absolute block w-0 h-0.5 bg-gradient-to-r from-electric-blue via-neon-purple to-neon-pink transition-all duration-300 bottom-0 left-0;
   }
-  
+
   .nav-link:hover::after, .nav-link.active::after {
     @apply w-full;
   }
-  
+
   /* Gradient text */
   .gradient-text {
     @apply bg-gradient-to-r from-electric-blue via-neon-teal to-neon-purple bg-clip-text text-transparent;
     background-size: 200% auto;
     animation: textShine 5s linear infinite;
   }
-  
+
   /* Shadow effects */
   .shadow-electric {
     box-shadow: 
       0 10px 25px -5px rgba(0, 210, 255, 0.3),
       0 5px 15px -8px rgba(0, 210, 255, 0.2);
   }
-  
+
   .shadow-neon {
     box-shadow:
       0 10px 25px -5px rgba(198, 82, 255, 0.3),
       0 5px 15px -8px rgba(198, 82, 255, 0.2);
   }
-  
+
   .shadow-pink {
     box-shadow: 
       0 10px 25px -5px rgba(255, 56, 179, 0.3),
       0 5px 15px -8px rgba(255, 56, 179, 0.2);
   }
-  
+
   /* Button hover effects */
   .btn-glow:hover {
     animation: btnGlow 1.5s infinite alternate;
@@ -229,23 +231,23 @@ body {
   .animation-delay-200 {
     animation-delay: 200ms;
   }
-  
+
   .animation-delay-500 {
     animation-delay: 500ms;
   }
-  
+
   .animation-delay-700 {
     animation-delay: 700ms;
   }
-  
+
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
-  
+
   .animate-float-slow {
     animation: float 8s ease-in-out infinite;
   }
-  
+
   .animate-float-reverse {
     animation: floatReverse 7s ease-in-out infinite;
   }

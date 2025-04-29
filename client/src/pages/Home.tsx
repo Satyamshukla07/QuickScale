@@ -30,7 +30,7 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-poppins leading-tight mb-6 text-gray-900 dark:text-white">
                 Accelerate Your <span className="gradient-text">Digital Presence</span> with QuickScale!
               </h1>
               <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
@@ -138,7 +138,7 @@ const Home = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-6 text-gray-900 dark:text-white">
                 Get a <span className="gradient-text">Quick Quote</span> for Your Project
               </h2>
               <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg">
@@ -191,7 +191,7 @@ const Home = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6 text-gray-900 dark:text-white">
               Our <span className="gradient-text">Impact</span> in Numbers
             </h2>
             <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto text-lg">
@@ -251,10 +251,10 @@ const Home = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6 text-gray-900 dark:text-white">
               Our <span className="gradient-text">Services</span>
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto text-lg">
               Comprehensive digital solutions to help your business thrive in the digital landscape.
             </p>
           </motion.div>
@@ -291,8 +291,8 @@ const Home = () => {
                       <div className={`text-${service.color === "blue" ? "electric-blue" : service.color === "purple" ? "neon-purple" : service.color === "teal" ? "neon-teal" : "neon-pink"} mb-4`}>
                         {IconComponent && <IconComponent className="h-7 w-7" />}
                       </div>
-                      <h3 className="text-xl font-bold font-poppins mb-3">{service.title}</h3>
-                      <p className="text-gray-300 mb-4 flex-grow text-sm">{service.description}</p>
+                      <h3 className="text-xl font-bold font-poppins mb-3 text-gray-900 dark:text-white">{service.title}</h3>
+                      <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow text-sm">{service.description}</p>
                     </div>
                   </GlassCard>
                 </motion.div>
@@ -329,10 +329,10 @@ const Home = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6 text-gray-900 dark:text-white">
               About <span className="gradient-text">QuickScale</span>
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto text-lg">
               We're a team of passionate digital experts on a mission to transform brands.
             </p>
           </motion.div>
@@ -347,7 +347,7 @@ const Home = () => {
             >
               <GlassCard className="p-8 h-full">
                 <h3 className="text-2xl font-bold font-poppins mb-6 text-electric-blue">Who We Are</h3>
-                <p className="text-gray-300 mb-6">
+                <p className="text-gray-700 dark:text-gray-300 mb-6">
                   At QuickScale, we blend creativity with data-driven strategies to deliver exceptional digital experiences. Our team of experts is dedicated to helping businesses of all sizes establish a powerful online presence and achieve sustainable growth.
                 </p>
 
@@ -356,24 +356,24 @@ const Home = () => {
                     <div className="w-14 h-14 rounded-full bg-electric-blue/20 flex items-center justify-center mx-auto mb-4">
                       <Zap className="text-electric-blue h-7 w-7" />
                     </div>
-                    <h4 className="font-bold mb-1">Fast Delivery</h4>
-                    <p className="text-gray-400 text-sm">Quick turnaround without compromising quality</p>
+                    <h4 className="font-bold mb-1 text-gray-900 dark:text-white">Fast Delivery</h4>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">Quick turnaround without compromising quality</p>
                   </div>
 
                   <div className="text-center">
                     <div className="w-14 h-14 rounded-full bg-neon-purple/20 flex items-center justify-center mx-auto mb-4">
                       <Building className="text-neon-purple h-7 w-7" />
                     </div>
-                    <h4 className="font-bold mb-1">Experienced Team</h4>
-                    <p className="text-gray-400 text-sm">Industry veterans with proven success records</p>
+                    <h4 className="font-bold mb-1 text-gray-900 dark:text-white">Experienced Team</h4>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">Industry veterans with proven success records</p>
                   </div>
 
                   <div className="text-center">
                     <div className="w-14 h-14 rounded-full bg-neon-teal/20 flex items-center justify-center mx-auto mb-4">
                       <TrendingUp className="text-neon-teal h-7 w-7" />
                     </div>
-                    <h4 className="font-bold mb-1">Results-Driven</h4>
-                    <p className="text-gray-400 text-sm">Focused on metrics that matter to your business</p>
+                    <h4 className="font-bold mb-1 text-gray-900 dark:text-white">Results-Driven</h4>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">Focused on metrics that matter to your business</p>
                   </div>
                 </div>
 
@@ -408,8 +408,8 @@ const Home = () => {
                     <div className="absolute -left-11 w-5 h-5 rounded-full bg-neon-purple flex items-center justify-center">
                       <div className="w-3 h-3 rounded-full bg-white"></div>
                     </div>
-                    <h4 className="text-xl font-bold font-poppins mb-2">{item.year}</h4>
-                    <p className="text-gray-300">{item.description}</p>
+                    <h4 className="text-xl font-bold font-poppins mb-2 text-gray-900 dark:text-white">{item.year}</h4>
+                    <p className="text-gray-700 dark:text-gray-300">{item.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -433,7 +433,7 @@ const Home = () => {
                     </div>
                   ))}
                 </div>
-                <p className="text-gray-300 text-sm mb-2">Meet our talented team of digital experts</p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm mb-2">Meet our talented team of digital experts</p>
                 <Link href="/about">
                   <Button variant="link" className="text-neon-purple hover:text-white p-0">
                     View Team →
@@ -458,10 +458,10 @@ const Home = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6">
+            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6 text-gray-900 dark:text-white">
               Trusted by <span className="gradient-text">Leading Brands</span>
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto text-lg">
               We're proud to partner with innovative companies across all industries and sizes.
             </p>
           </motion.div>
@@ -490,12 +490,12 @@ const Home = () => {
                 />
               </div>
               <div className="flex-1">
-                <p className="text-gray-300 italic mb-4">
+                <p className="text-gray-700 dark:text-gray-300 italic mb-4">
                   "QuickScale completely transformed our digital presence. Their strategic approach helped us increase engagement by 215% and conversion rates by 40% in just three months!"
                 </p>
                 <div>
-                  <p className="text-white font-bold">Priya Sharma</p>
-                  <p className="text-gray-400 text-sm">Marketing Director, InnovateIndia</p>
+                  <p className="text-gray-900 dark:text-white font-bold">Priya Sharma</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-sm">Marketing Director, InnovateIndia</p>
                 </div>
               </div>
             </div>
@@ -526,10 +526,10 @@ const Home = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl font-bold font-poppins mb-4">
+            <h2 className="text-3xl font-bold font-poppins mb-4 text-gray-900 dark:text-white">
               Personalized <span className="gradient-text">Recommendations</span> For You
             </h2>
-            <p className="text-gray-300 max-w-2xl mx-auto">
+            <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
               Based on your interests, we've selected the perfect next steps to help you achieve your digital goals.
             </p>
           </motion.div>
