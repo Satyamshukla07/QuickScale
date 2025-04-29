@@ -7,7 +7,7 @@ export const COMPANY_INFO = {
   phone: "+1 (415) 555-7890",
   whatsapp: "+1 (415) 555-7890",
   address: "123 Innovation Drive, Tech District, San Francisco, CA 94107",
-  yearFounded: 2023,
+  yearFounded: 2015,
   socialMedia: {
     facebook: "https://facebook.com/quickscale",
     twitter: "https://twitter.com/quickscale",
@@ -96,10 +96,10 @@ export const SERVICES = [
 export const TEAM_MEMBERS = [
   {
     id: 1,
-    name: "Aarav Patel",
+    name: "Satyam Shukla",
     position: "CEO & Founder",
-    bio: "Digital strategist with innovative vision for transforming brands.",
-    imageUrl: "https://images.unsplash.com/photo-1614644147724-2d4785d69962?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    bio: "Digital strategist with 15+ years experience in transforming brands.",
+    imageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     socialLinks: {
       linkedin: "#",
       twitter: "#",
@@ -107,10 +107,10 @@ export const TEAM_MEMBERS = [
   },
   {
     id: 2,
-    name: "Riya Sharma",
+    name: "Deepak Yadav",
     position: "Creative Director",
     bio: "Award-winning designer specializing in brand identities and UI/UX.",
-    imageUrl: "https://images.unsplash.com/photo-1605017384478-860c0c63c8ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     socialLinks: {
       linkedin: "#",
       dribbble: "#",
@@ -118,10 +118,10 @@ export const TEAM_MEMBERS = [
   },
   {
     id: 3,
-    name: "Priya Malhotra",
+    name: "Ankita Pandey",
     position: "SEO Specialist",
     bio: "Data-driven search expert with proven growth strategies.",
-    imageUrl: "https://images.unsplash.com/photo-1604684330644-25c4196e72dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     socialLinks: {
       linkedin: "#",
       twitter: "#",
@@ -129,10 +129,10 @@ export const TEAM_MEMBERS = [
   },
   {
     id: 4,
-    name: "Arjun Mehta",
+    name: "Darshit Kandoliya",
     position: "Social Media Director",
     bio: "Viral campaign creator with expertise across all platforms.",
-    imageUrl: "https://images.unsplash.com/photo-1578635073855-a89b3dd5cc18?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     socialLinks: {
       linkedin: "#",
       instagram: "#",
