@@ -428,8 +428,8 @@ const Home = () => {
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" 
-                  alt="Rebecca Chen" 
+                  src="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" 
+                  alt="Priya Sharma" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -438,8 +438,8 @@ const Home = () => {
                   "QuickScale completely transformed our digital presence. Their strategic approach helped us increase engagement by 215% and conversion rates by 40% in just three months!"
                 </p>
                 <div>
-                  <p className="text-white font-bold">Rebecca Chen</p>
-                  <p className="text-gray-400 text-sm">Marketing Director</p>
+                  <p className="text-white font-bold">Priya Sharma</p>
+                  <p className="text-gray-400 text-sm">Marketing Director, InnovateIndia</p>
                 </div>
               </div>
             </div>

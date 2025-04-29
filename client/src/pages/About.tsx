@@ -1,65 +1,11 @@
 import { motion } from "framer-motion";
 import { Linkedin, Twitter, Dribbble, Instagram } from "lucide-react";
 import GlassCard from "@/components/GlassCard";
+import { TEAM_MEMBERS, TIMELINE } from "@/lib/constants";
 
 const About = () => {
-  const teamMembers = [
-    {
-      name: "Sarah Johnson",
-      position: "CEO & Founder",
-      bio: "Digital strategist with 15+ years experience in transforming brands.",
-      imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      socialLinks: {
-        linkedin: "#",
-        twitter: "#"
-      }
-    },
-    {
-      name: "David Chen",
-      position: "Creative Director",
-      bio: "Award-winning designer specializing in brand identities and UI/UX.",
-      imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      socialLinks: {
-        linkedin: "#",
-        dribbble: "#"
-      }
-    },
-    {
-      name: "Emily Rodriguez",
-      position: "SEO Specialist",
-      bio: "Data-driven search expert with proven growth strategies.",
-      imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      socialLinks: {
-        linkedin: "#",
-        twitter: "#"
-      }
-    },
-    {
-      name: "Marcus Taylor",
-      position: "Social Media Director",
-      bio: "Viral campaign creator with expertise across all platforms.",
-      imageUrl: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      socialLinks: {
-        linkedin: "#",
-        instagram: "#"
-      }
-    }
-  ];
-
-  const timelineItems = [
-    {
-      year: "2015",
-      description: "Founded with the vision to disrupt digital marketing."
-    },
-    {
-      year: "2018",
-      description: "Expanded services to include advanced analytics and AI-powered insights."
-    },
-    {
-      year: "2023",
-      description: "Established as an industry leader with international client base."
-    }
-  ];
+  const teamMembers = TEAM_MEMBERS;
+  const timelineItems = TIMELINE;
 
   return (
     <section id="about" className="py-32 bg-dark-bg">
@@ -70,7 +16,7 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">About Quickscale</h2>
+          <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">About QuickScale</h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
             We're a team of passionate digital marketers on a mission to transform brands.
           </p>

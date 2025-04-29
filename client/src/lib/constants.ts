@@ -96,10 +96,10 @@ export const SERVICES = [
 export const TEAM_MEMBERS = [
   {
     id: 1,
-    name: "Sarah Johnson",
+    name: "Satyam Shukla",
     position: "CEO & Founder",
     bio: "Digital strategist with 15+ years experience in transforming brands.",
-    imageUrl: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     socialLinks: {
       linkedin: "#",
       twitter: "#",
@@ -107,10 +107,10 @@ export const TEAM_MEMBERS = [
   },
   {
     id: 2,
-    name: "David Chen",
+    name: "Deepak Yadav",
     position: "Creative Director",
     bio: "Award-winning designer specializing in brand identities and UI/UX.",
-    imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     socialLinks: {
       linkedin: "#",
       dribbble: "#",
@@ -118,10 +118,10 @@ export const TEAM_MEMBERS = [
   },
   {
     id: 3,
-    name: "Emily Rodriguez",
+    name: "Ankita Pandey",
     position: "SEO Specialist",
     bio: "Data-driven search expert with proven growth strategies.",
-    imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     socialLinks: {
       linkedin: "#",
       twitter: "#",
@@ -129,10 +129,10 @@ export const TEAM_MEMBERS = [
   },
   {
     id: 4,
-    name: "Marcus Taylor",
+    name: "Darshit Kandoliya",
     position: "Social Media Director",
     bio: "Viral campaign creator with expertise across all platforms.",
-    imageUrl: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     socialLinks: {
       linkedin: "#",
       instagram: "#",
@@ -198,30 +198,39 @@ export const NAV_LINKS = [
 export const TESTIMONIALS = [
   {
     id: 1,
-    name: "Rebecca Chen",
+    name: "Priya Sharma",
     position: "Marketing Director",
-    company: "",
+    company: "InnovateIndia",
     message: "QuickScale completely transformed our digital presence. Their strategic approach to social media and content marketing helped us increase our engagement by 215% and conversion rates by 40% in just three months. Their team is responsive, creative, and truly understands our brand voice. We couldn't be happier with the results!",
     rating: 5,
-    imageUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1573497019418-b400bb3ab074?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
   },
   {
     id: 2,
-    name: "Michael Torres",
+    name: "Arjun Patel",
     position: "CEO",
-    company: "TechStart",
+    company: "TechVision",
     message: "As a startup, we needed to establish our brand quickly in a competitive market. QuickScale delivered a comprehensive marketing strategy that helped us gain traction from day one. Their SEO work has been particularly impressive, placing us on the first page for our key terms in under 6 months. Highly recommended!",
     rating: 5,
-    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
   },
   {
     id: 3,
-    name: "Sophia Williams",
+    name: "Meera Kapoor",
     position: "Brand Manager",
-    company: "StyleCo",
+    company: "FashionTrend",
     message: "Working with QuickScale has been a game-changer for our fashion brand. Their social media campaigns have consistently outperformed our expectations, and they've helped us build a loyal community around our products. Their content team has a remarkable ability to capture our brand voice and connect with our target audience.",
     rating: 4.5,
-    imageUrl: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+  },
+  {
+    id: 4,
+    name: "Raj Mehta",
+    position: "Operations Director",
+    company: "GlobalLogic",
+    message: "The digital marketing and web development services provided by QuickScale exceeded our expectations on every level. Their team's attention to detail and commitment to delivering results has made them an invaluable partner for our business growth strategy.",
+    rating: 5,
+    imageUrl: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
   },
 ];
 
