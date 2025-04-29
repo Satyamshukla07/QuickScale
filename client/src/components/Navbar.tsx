@@ -59,7 +59,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
   return (
     <nav className={`fixed w-full z-50 top-0 py-3 transition-all duration-300 ${isScrolled ? 'glass' : 'glass bg-opacity-0'}`}>
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold font-poppins text-white flex items-center">
+        <Link href="/" className="text-2xl font-bold font-poppins text-foreground dark:text-white flex items-center">
           <span className="text-electric-blue mr-1">
             <Bolt className="h-6 w-6" />
           </span>
