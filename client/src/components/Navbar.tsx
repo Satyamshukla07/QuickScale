@@ -77,30 +77,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
         
         {/* Login/Signup/User Menu */}
         <div className="hidden md:flex items-center space-x-4">
-          {isAuthenticated ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative">
-                  <User className="h-5 w-5 mr-2" />
-                  {userName || 'User'}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end">
-                <DropdownMenuItem onClick={() => navigate('/dashboard')}>
-                  Dashboard
-                </DropdownMenuItem>
-                {isAdmin && (
-                  <DropdownMenuItem onClick={() => navigate('/admin')}>
-                    Admin Dashboard
-                  </DropdownMenuItem>
-                )}
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout}>
-                  Logout
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          ) : (
+          {/* Add authentication state management here */}
             <>
               <Button 
                 variant="ghost" 

@@ -93,7 +93,7 @@ export default function AdminDashboard() {
   }
   
   return (
-    <div className="container max-w-7xl mx-auto pt-24 pb-10 px-4 sm:px-6">
+    <div className="container max-w-7xl mx-auto mt-24 pt-16 pb-10 px-4 sm:px-6">
       <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
         Admin Dashboard
       </h1>

@@ -105,7 +105,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="pt-24 pb-12 px-4 md:px-6 lg:px-8 bg-background">
+    <div className="mt-24 pt-16 pb-12 px-4 md:px-6 lg:px-8 bg-background">
       <div className="container mx-auto max-w-7xl">
         {/* Dashboard Header */}
         <motion.div
