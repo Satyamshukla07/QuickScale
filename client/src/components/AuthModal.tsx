@@ -30,16 +30,33 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
   
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Login logic would go here
-    toast({
-      title: "Login Attempted",
-      description: "This is a demo. Actual authentication would be implemented here.",
-    });
+    try {
+      if (loginEmail === 'admin@example.com' && loginPassword === 'admin123') {
+        toast({
+          title: "Success",
+          description: "Successfully logged in as admin",
+        });
+        onClose();
+        window.location.href = '/admin';
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Invalid credentials. Try admin@example.com / admin123",
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to login",
+      });
+    }
   };
   
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (signupPassword !== confirmPassword) {
