@@ -38,6 +38,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
     { name: "Portfolio", path: "/portfolio" },
     { name: "Testimonials", path: "/testimonials" },
     { name: "Contact", path: "/contact" },
+    { name: "Dashboard", path: "/dashboard" },
   ];
 
   return (

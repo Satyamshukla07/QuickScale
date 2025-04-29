@@ -9,6 +9,7 @@ import Testimonials from "@/pages/Testimonials";
 import Contact from "@/pages/Contact";
 import Login from "@/pages/Login";
 import SignUp from "@/pages/SignUp";
+import Dashboard from "@/pages/Dashboard";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
+      <Route path="/dashboard" component={Dashboard} />
       <Route component={NotFound} />
     </Switch>
   );
