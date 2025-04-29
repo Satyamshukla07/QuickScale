@@ -29,7 +29,8 @@ interface ProjectSize {
 }
 
 export default function PriceCalculator() {
-  const [isOpen, setIsOpen] = useState(false);
+  // This line was causing issues, removing it as it's not being used
+  // const [isOpen, setIsOpen] = useState(false);
   const [services, setServices] = useState<ServiceOption[]>([
     {
       id: "social-media",

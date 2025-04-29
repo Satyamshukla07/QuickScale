@@ -1,6 +1,5 @@
 import { Switch, Route, useLocation } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
@@ -49,24 +48,22 @@ function App() {
   };
 
   return (
-    <TooltipProvider>
-      <div className="flex flex-col min-h-screen">
-        <Navbar openAuthModal={openAuthModal} />
-        <main className="flex-grow">
-          <Router />
-        </main>
-        <Footer />
-        <ScrollToTop />
-        <AuthModal 
-          isOpen={isAuthModalOpen} 
-          onClose={() => setIsAuthModalOpen(false)} 
-          activeTab={activeAuthTab}
-          setActiveTab={setActiveAuthTab}
-        />
-        <Toaster />
-        <LiveChat />
-      </div>
-    </TooltipProvider>
+    <div className="flex flex-col min-h-screen">
+      <Navbar openAuthModal={openAuthModal} />
+      <main className="flex-grow">
+        <Router />
+      </main>
+      <Footer />
+      <ScrollToTop />
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)} 
+        activeTab={activeAuthTab}
+        setActiveTab={setActiveAuthTab}
+      />
+      <Toaster />
+      <LiveChat />
+    </div>
   );
 }
 
