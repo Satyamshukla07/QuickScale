@@ -1,5 +1,6 @@
+
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "wouter";
+import { useLocation } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { getQueryFn, apiRequest, queryClient } from "@/lib/queryClient";
 import { AlertCircle, CheckCircle, Clock, Mail, MessageSquare, User, CalendarClock, Phone } from "lucide-react";
@@ -22,36 +23,29 @@ interface FormSubmission {
 
 export default function AdminDashboard() {
   const [, navigate] = useLocation();
-  const [initialLoading, setInitialLoading] = useState(true);
+  const { toast } = useToast();
+  const [activeTab, setActiveTab] = useState<string>("all");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const checkAuth = () => {
       const isAuth = localStorage.getItem('isAuthenticated') === 'true';
-      const isAdmin = localStorage.getItem('userEmail') === 'admin@example.com';
-
-      if (!isAuth || !isAdmin) {
+      const userEmail = localStorage.getItem('userEmail');
+      
+      if (!isAuth || userEmail !== 'admin@example.com') {
         navigate('/login');
         return;
       }
-      setInitialLoading(false);
+      setIsAdmin(true);
     };
 
     checkAuth();
   }, [navigate]);
 
-  if (initialLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p className="text-xl">Loading...</p>
-      </div>
-    );
-  }
-  const { toast } = useToast();
-  const [activeTab, setActiveTab] = useState<string>("all");
-
   const { data: submissions = [], isLoading, refetch } = useQuery<FormSubmission[]>({
     queryKey: ['/api/admin/submissions'],
     queryFn: getQueryFn({ on401: "throw" }),
+    enabled: isAdmin
   });
 
   const markAsViewedMutation = useMutation({
@@ -74,6 +68,18 @@ export default function AdminDashboard() {
       });
     },
   });
+
+  if (!isAdmin) {
+    return null;
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p className="text-xl">Loading submissions...</p>
+      </div>
+    );
+  }
 
   // Filter submissions based on active tab
   const filteredSubmissions = submissions.filter(submission => {
@@ -109,14 +115,6 @@ export default function AdminDashboard() {
       return dateString;
     }
   };
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p className="text-xl">Loading submissions...</p>
-      </div>
-    );
-  }
 
   return (
     <div className="container max-w-7xl mx-auto mt-24 pt-16 pb-10 px-4 sm:px-6">
