@@ -17,8 +17,8 @@ const GlassCard = ({
   return (
     <div
       className={cn(
-        "dark:bg-white/5 bg-white/60 backdrop-blur-md border dark:border-white/10 border-gray-200/80 rounded-xl shadow-lg",
-        hoverEffect && "hover:transform hover:-translate-y-1 hover:shadow-electric transition-all duration-300",
+        "dark:bg-white/10 bg-white/60 backdrop-blur-xl border dark:border-white/20 border-gray-200/80 rounded-xl shadow-lg",
+        hoverEffect && "hover:transform hover:-translate-y-1 hover:shadow-electric transition-all duration-300 dark:hover:bg-white/15",
         className
       )}
       onClick={onClick}
