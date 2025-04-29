@@ -65,7 +65,7 @@ const Home = () => {
               </div>
               
               <motion.div 
-                className="absolute -bottom-10 -left-10 glass p-5 rounded-lg shadow-electric hidden md:block animate-float"
+                className="absolute -bottom-16 -left-16 glass p-5 rounded-lg shadow-electric hidden md:block animate-float z-20"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
@@ -82,7 +82,7 @@ const Home = () => {
               </motion.div>
               
               <motion.div 
-                className="absolute -top-10 -right-10 glass p-5 rounded-lg shadow-neon hidden md:block animate-float-reverse"
+                className="absolute -top-16 -right-16 glass p-5 rounded-lg shadow-neon hidden md:block animate-float-reverse z-20"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
