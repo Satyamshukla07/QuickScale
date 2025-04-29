@@ -85,14 +85,9 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
           <PersonalizedCTA variant="compact" />
         </div>
 
-        {/* Contact Button */}
-        <div className="hidden md:flex items-center">
-          <Button 
-            className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
-            onClick={() => navigate('/contact')}
-          >
-            Contact Us
-          </Button>
+        {/* Navbar buttons container */}
+        <div className="hidden md:flex items-center gap-4">
+          <PersonalizedCTA variant="compact" />
         </div>
 
         {/* Mobile Menu Toggle */}
