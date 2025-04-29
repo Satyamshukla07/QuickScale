@@ -14,7 +14,7 @@ interface NavbarProps {
 const Navbar = ({ openAuthModal }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
   const { t } = useTranslation();
   const { primaryInterest } = useBrowsing();
 
