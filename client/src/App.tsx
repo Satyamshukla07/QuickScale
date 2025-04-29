@@ -15,21 +15,28 @@ import Navbar from "@/components/Navbar";
 
 const ProtectedAdminRoute = ({ component: Component }: { component: React.ComponentType }) => {
   const [, navigate] = useLocation();
+  const [isAuthorized, setIsAuthorized] = useState(false);
   
   useEffect(() => {
-    const isAuth = localStorage.getItem('isAuthenticated') === 'true';
-    const isAdmin = localStorage.getItem('userEmail') === 'admin@example.com';
-    
-    if (!isAuth || !isAdmin) {
-      navigate('/login');
-      return;
-    }
+    const checkAuth = () => {
+      const isAuth = localStorage.getItem('isAuthenticated') === 'true';
+      const isAdmin = localStorage.getItem('userEmail') === 'admin@example.com';
+      
+      if (!isAuth || !isAdmin) {
+        navigate('/login');
+        return;
+      }
+      setIsAuthorized(true);
+    };
+
+    checkAuth();
+
+    // Listen for storage changes
+    window.addEventListener('storage', checkAuth);
+    return () => window.removeEventListener('storage', checkAuth);
   }, [navigate]);
 
-  const isAuth = localStorage.getItem('isAuthenticated') === 'true';
-  const isAdmin = localStorage.getItem('userEmail') === 'admin@example.com';
-
-  if (!isAuth || !isAdmin) {
+  if (!isAuthorized) {
     return null;
   }
 
