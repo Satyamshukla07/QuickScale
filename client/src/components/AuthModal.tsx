@@ -34,6 +34,8 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
     e.preventDefault();
     try {
       if (loginEmail === 'admin@example.com' && loginPassword === 'admin123') {
+        localStorage.setItem('userEmail', loginEmail);
+        localStorage.setItem('isAuthenticated', 'true');
         toast({
           title: "Success",
           description: "Successfully logged in as admin",
