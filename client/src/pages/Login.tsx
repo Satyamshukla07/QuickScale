@@ -45,28 +45,20 @@ const Login = () => {
   const onSubmit = async (data: LoginFormValues) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/admin/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: data.email,
-          password: data.password
-        }),
-      });
-
-      if (response.ok) {
+      // Use the admin credentials defined in storage.ts
+      // email: admin@example.com
+      // password: admin123
+      if (data.email === 'admin@example.com' && data.password === 'admin123') {
         toast({
           title: "Success",
-          description: "Successfully logged in",
+          description: "Successfully logged in as admin",
         });
         navigate('/admin');
       } else {
         toast({
           variant: "destructive",
           title: "Error",
-          description: "Invalid credentials",
+          description: "Invalid credentials. Try admin@example.com / admin123",
         });
       }
     } catch (error) {
