@@ -22,7 +22,8 @@ interface FormSubmission {
 
 export default function AdminDashboard() {
   const [, navigate] = useLocation();
-  const [isLoading, setIsLoading] = useState(true);
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [, navigate] = useLocation();
   
   useEffect(() => {
     const checkAuth = () => {
@@ -33,13 +34,13 @@ export default function AdminDashboard() {
         navigate('/login');
         return;
       }
-      setIsLoading(false);
+      setInitialLoading(false);
     };
     
     checkAuth();
   }, [navigate]);
 
-  if (isLoading) {
+  if (initialLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <p className="text-xl">Loading...</p>

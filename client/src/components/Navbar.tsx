@@ -17,10 +17,17 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
   const [location, navigate] = useLocation();
   const { t } = useTranslation();
   const { primaryInterest } = useBrowsing();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => 
+    localStorage.getItem('isAuthenticated') === 'true'
+  );
 
   useEffect(() => {
-    setIsAuthenticated(localStorage.getItem('isAuthenticated') === 'true');
+    const checkAuth = () => {
+      setIsAuthenticated(localStorage.getItem('isAuthenticated') === 'true');
+    };
+    
+    window.addEventListener('storage', checkAuth);
+    return () => window.removeEventListener('storage', checkAuth);
   }, []);
 
   useEffect(() => {
