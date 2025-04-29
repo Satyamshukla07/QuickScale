@@ -81,11 +81,6 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
         </div>
 
         {/* Personalized CTA - Desktop */}
-        <div className="hidden md:block mx-2">
-          <PersonalizedCTA variant="compact" />
-        </div>
-
-        {/* Navbar buttons container */}
         <div className="hidden md:flex items-center gap-4">
           <PersonalizedCTA variant="compact" />
         </div>
