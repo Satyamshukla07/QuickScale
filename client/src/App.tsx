@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import AuthModal from "@/components/AuthModal";
+import LiveChat from "@/components/LiveChat";
 import { useState, useEffect } from "react";
 
 function Router() {
@@ -63,6 +64,7 @@ function App() {
           setActiveTab={setActiveAuthTab}
         />
         <Toaster />
+        <LiveChat />
       </div>
     </TooltipProvider>
   );
