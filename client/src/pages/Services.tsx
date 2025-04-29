@@ -1,10 +1,21 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Instagram, PenTool, Search, BarChart3, Palette, Code, Smartphone, Globe, AtSign } from "lucide-react";
 import GlassCard from "@/components/GlassCard";
 import { SERVICES } from "@/lib/constants";
 import PriceCalculator from "@/components/PriceCalculator";
+import PersonalizedCTA from "@/components/PersonalizedCTA";
+import { useBrowsing } from "@/hooks/use-browsing-context";
 
 const Services = () => {
+  // Get user browsing behavior and update service interest
+  const { updateInterest } = useBrowsing();
+  
+  // Update the interest when the services page is viewed
+  useEffect(() => {
+    updateInterest('services');
+  }, [updateInterest]);
+  
   // Define map of icon names to actual components
   const iconMap: {[key: string]: any} = {
     Instagram,

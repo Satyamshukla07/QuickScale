@@ -3,6 +3,8 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Bolt } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import PersonalizedCTA from "@/components/PersonalizedCTA";
+import { useBrowsing } from "@/hooks/use-browsing-context";
 
 interface NavbarProps {
   openAuthModal: (tab: 'login' | 'signup') => void;
@@ -13,6 +15,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
   const { t } = useTranslation();
+  const { primaryInterest } = useBrowsing();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,6 +70,11 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
           ))}
         </div>
         
+        {/* Personalized CTA - Desktop */}
+        <div className="hidden md:block mx-2">
+          <PersonalizedCTA variant="compact" />
+        </div>
+        
         {/* Login/Signup */}
         <div className="hidden md:flex items-center space-x-4">
           <Button 
@@ -107,6 +115,11 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
               {link.name}
             </Link>
           ))}
+          {/* Personalized CTA - Mobile */}
+          <div className="my-3">
+            <PersonalizedCTA variant="compact" />
+          </div>
+          
           <hr className="border-gray-700" />
           <div className="flex space-x-4">
             <Button 
