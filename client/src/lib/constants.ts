@@ -24,13 +24,55 @@ export const SERVICES = [
     description: "Strategic content creation and community management across all major platforms.",
     icon: "Instagram",
     color: "blue",
+    image: "https://images.unsplash.com/photo-1611162616475-46b635cb6868?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "ui-ux-design",
+    title: "UI/UX Design",
+    description: "User-centered design solutions that create intuitive, engaging digital experiences for your customers.",
+    icon: "Palette",
+    color: "purple",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "web-development",
+    title: "Website Development",
+    description: "Custom, responsive websites built with cutting-edge technologies that drive conversions and growth.",
+    icon: "Code",
+    color: "teal",
+    image: "https://images.unsplash.com/photo-1603322327935-1a3d1f468328?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "mobile-development",
+    title: "Mobile App Development",
+    description: "Native and cross-platform mobile applications that deliver exceptional user experiences across devices.",
+    icon: "Smartphone",
+    color: "pink",
+    image: "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "web-app-development",
+    title: "Web Application Development",
+    description: "Scalable, feature-rich web applications built with modern frameworks and cloud technologies.",
+    icon: "Globe",
+    color: "blue",
+    image: "https://images.unsplash.com/photo-1616469829941-c7200edec809?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: "meta-advertising",
+    title: "Meta Advertising",
+    description: "Strategic campaigns across Facebook, Instagram, and Meta platforms to maximize ROI and engagement.",
+    icon: "AtSign",
+    color: "purple",
+    image: "https://images.unsplash.com/photo-1579869847514-7c1a19d2d2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "content-creation",
     title: "Content Creation",
     description: "Engaging blog posts, videos, graphics and interactive content that resonates with your audience.",
     icon: "PenTool",
-    color: "purple",
+    color: "teal",
+    image: "https://images.unsplash.com/photo-1452830978618-d6feae7d0ffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "seo",
@@ -38,27 +80,15 @@ export const SERVICES = [
     description: "Data-driven SEO strategies to improve your visibility and organic traffic.",
     icon: "Search",
     color: "blue",
-  },
-  {
-    id: "ppc",
-    title: "PPC Advertising",
-    description: "Targeted paid campaigns across Google, social media, and other relevant platforms.",
-    icon: "AdCircle",
-    color: "purple",
+    image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "analytics",
     title: "Analytics & Reporting",
     description: "Comprehensive analytics to track performance and optimize your marketing ROI.",
     icon: "BarChart3",
-    color: "blue",
-  },
-  {
-    id: "brand-strategy",
-    title: "Brand Strategy",
-    description: "Cohesive brand identity development and positioning in competitive markets.",
-    icon: "Megaphone",
-    color: "purple",
+    color: "pink",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
   },
 ];
 

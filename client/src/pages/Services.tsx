@@ -1,46 +1,21 @@
 import { motion } from "framer-motion";
-import { Instagram, PenTool, Search, Bookmark, BarChart3, Megaphone, ArrowRight } from "lucide-react";
+import { ArrowRight, Instagram, PenTool, Search, BarChart3, Palette, Code, Smartphone, Globe, AtSign } from "lucide-react";
 import GlassCard from "@/components/GlassCard";
+import { SERVICES } from "@/lib/constants";
 
 const Services = () => {
-  const services = [
-    {
-      icon: Instagram,
-      title: "Social Media Marketing",
-      description: "Strategic content creation and community management across all major platforms.",
-      color: "blue",
-    },
-    {
-      icon: PenTool,
-      title: "Content Creation",
-      description: "Engaging blog posts, videos, graphics and interactive content that resonates with your audience.",
-      color: "purple",
-    },
-    {
-      icon: Search,
-      title: "Search Engine Optimization",
-      description: "Data-driven SEO strategies to improve your visibility and organic traffic.",
-      color: "blue",
-    },
-    {
-      icon: Bookmark,
-      title: "PPC Advertising",
-      description: "Targeted paid campaigns across Google, social media, and other relevant platforms.",
-      color: "purple",
-    },
-    {
-      icon: BarChart3,
-      title: "Analytics & Reporting",
-      description: "Comprehensive analytics to track performance and optimize your marketing ROI.",
-      color: "blue",
-    },
-    {
-      icon: Megaphone,
-      title: "Brand Strategy",
-      description: "Cohesive brand identity development and positioning in competitive markets.",
-      color: "purple",
-    },
-  ];
+  // Define map of icon names to actual components
+  const iconMap: {[key: string]: any} = {
+    Instagram,
+    PenTool,
+    Search,
+    BarChart3,
+    Palette,
+    Code,
+    Smartphone,
+    Globe,
+    AtSign
+  };
 
   const container = {
     hidden: { opacity: 0 },
@@ -58,19 +33,24 @@ const Services = () => {
   };
 
   return (
-    <section id="services" className="py-32 bg-dark-bg">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="services" className="py-32 bg-dark-bg relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-electric-blue/5 via-neon-teal/5 to-neon-purple/5 opacity-70"></div>
+      <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-neon-pink/5 blur-3xl"></div>
+      <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-electric-blue/5 blur-3xl"></div>
+      
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">
-            Our Digital Marketing Services
+          <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6">
+            Our <span className="gradient-text">Services</span>
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto">
-            Comprehensive strategies to grow your brand across all digital channels.
+          <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+            Comprehensive strategies and solutions to grow your brand across all digital channels.
           </p>
         </motion.div>
 
@@ -81,26 +61,44 @@ const Services = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
         >
-          {services.map((service, index) => (
-            <motion.div key={index} variants={item}>
-              <GlassCard className="p-8 h-full flex flex-col" hoverEffect>
-                <div className={`text-${service.color === "blue" ? "electric-blue" : "neon-purple"} mb-4 text-4xl`}>
-                  <service.icon />
-                </div>
-                <h3 className="text-xl font-bold font-poppins mb-3">{service.title}</h3>
-                <p className="text-gray-300 mb-4 flex-grow">{service.description}</p>
-                <a
-                  href="#"
-                  className={`text-${
-                    service.color === "blue" ? "electric-blue" : "neon-purple"
-                  } hover:text-${service.color === "blue" ? "neon-purple" : "electric-blue"} transition duration-300 flex items-center group`}
-                >
-                  Learn more{" "}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </a>
-              </GlassCard>
-            </motion.div>
-          ))}
+          {SERVICES.map((service, index) => {
+            const IconComponent = iconMap[service.icon];
+            
+            return (
+              <motion.div key={index} variants={item}>
+                <GlassCard className="h-full flex flex-col relative overflow-hidden group" hoverEffect>
+                  {/* Service image */}
+                  <div className="h-48 w-full overflow-hidden rounded-t-xl">
+                    <img 
+                      src={service.image} 
+                      alt={service.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className={`text-${service.color === "blue" ? "electric-blue" : service.color === "purple" ? "neon-purple" : service.color === "teal" ? "neon-teal" : "neon-pink"} mb-4`}>
+                      {IconComponent && <IconComponent className="h-7 w-7" />}
+                    </div>
+                    <h3 className="text-xl font-bold font-poppins mb-3">{service.title}</h3>
+                    <p className="text-gray-300 mb-4 flex-grow text-sm">{service.description}</p>
+                    <a
+                      href="#"
+                      className={`text-${
+                        service.color === "blue" ? "electric-blue" : 
+                        service.color === "purple" ? "neon-purple" : 
+                        service.color === "teal" ? "neon-teal" : "neon-pink"
+                      } hover:text-white transition duration-300 flex items-center group mt-2`}
+                    >
+                      Learn more{" "}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </a>
+                  </div>
+                </GlassCard>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
