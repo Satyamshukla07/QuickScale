@@ -12,6 +12,21 @@ import SignUp from "@/pages/SignUp";
 import Dashboard from "@/pages/Dashboard";
 import AdminDashboard from "@/pages/AdminDashboard";
 import Navbar from "@/components/Navbar";
+
+const ProtectedAdminRoute = ({ component: Component }: { component: React.ComponentType }) => {
+  const [, navigate] = useLocation();
+  
+  useEffect(() => {
+    const isAuth = localStorage.getItem('isAuthenticated') === 'true';
+    const isAdmin = localStorage.getItem('userEmail') === 'admin@example.com';
+    
+    if (!isAuth || !isAdmin) {
+      navigate('/login');
+    }
+  }, [navigate]);
+
+  return <Component />;
+};
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import AuthModal from "@/components/AuthModal";
@@ -38,7 +53,7 @@ function Router() {
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route path="/dashboard" component={Dashboard} />
-      <Route path="/admin-dashboard" component={AdminDashboard} />
+      <Route path="/admin-dashboard" component={() => <ProtectedAdminRoute component={AdminDashboard} />} />
       <Route component={NotFound} />
     </Switch>
   );

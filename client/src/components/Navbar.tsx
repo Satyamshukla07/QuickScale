@@ -87,9 +87,15 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
         <div className="hidden md:flex items-center space-x-4">
           {localStorage.getItem('isAuthenticated') === 'true' ? (
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" onClick={() => navigate(localStorage.getItem('userEmail') === 'admin@example.com' ? '/admin-dashboard' : '/dashboard')}>
-                {localStorage.getItem('userEmail') ? localStorage.getItem('userEmail').split('@')[0] : 'Profile'}
-              </Button>
+              {localStorage.getItem('userEmail') === 'admin@example.com' ? (
+                <Button variant="ghost" onClick={() => navigate('/admin-dashboard')}>
+                  Admin Dashboard
+                </Button>
+              ) : (
+                <Button variant="ghost" onClick={() => navigate('/dashboard')}>
+                  {localStorage.getItem('userEmail') ? localStorage.getItem('userEmail').split('@')[0] : 'Profile'}
+                </Button>
+              )}
               <Button 
                 variant="ghost"
                 className="text-light-text hover:text-electric-blue transition duration-300"
