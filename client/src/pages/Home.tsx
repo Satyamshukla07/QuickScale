@@ -157,7 +157,7 @@ const Home = () => {
                     <div className="w-6 h-6 rounded-full bg-electric-blue/20 flex items-center justify-center">
                       <Check className="h-3 w-3 text-electric-blue" />
                     </div>
-                    <span className="text-gray-200">{item}</span>
+                    <span className="text-gray-900 dark:text-gray-200">{item}</span>
                   </motion.li>
                 ))}
               </ul>
