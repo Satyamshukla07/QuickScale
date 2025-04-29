@@ -49,11 +49,8 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
 
   const navLinks = [
     { name: t('navbar.home'), path: "/" },
-    { name: t('navbar.about'), path: "/about" },
     { name: t('navbar.services'), path: "/services" },
     { name: t('navbar.portfolio'), path: "/portfolio" },
-    { name: t('navbar.testimonials'), path: "/testimonials" },
-    { name: t('navbar.contact'), path: "/contact" },
     { name: t('navbar.dashboard'), path: "/dashboard" },
   ];
 
