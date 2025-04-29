@@ -16,6 +16,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import AuthModal from "@/components/AuthModal";
 import LiveChat from "@/components/LiveChat";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useState, useEffect } from "react";
 
 function Router() {
@@ -67,6 +68,7 @@ function App() {
       <Toaster />
       <LiveChat />
       <ThemeToggle />
+      <LanguageSwitcher />
     </div>
   );
 }

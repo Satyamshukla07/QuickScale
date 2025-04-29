@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Bolt } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface NavbarProps {
   openAuthModal: (tab: 'login' | 'signup') => void;
@@ -11,6 +12,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,13 +34,13 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
   };
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Portfolio", path: "/portfolio" },
-    { name: "Testimonials", path: "/testimonials" },
-    { name: "Contact", path: "/contact" },
-    { name: "Dashboard", path: "/dashboard" },
+    { name: t('navbar.home'), path: "/" },
+    { name: t('navbar.about'), path: "/about" },
+    { name: t('navbar.services'), path: "/services" },
+    { name: t('navbar.portfolio'), path: "/portfolio" },
+    { name: t('navbar.testimonials'), path: "/testimonials" },
+    { name: t('navbar.contact'), path: "/contact" },
+    { name: t('navbar.dashboard'), path: "/dashboard" },
   ];
 
   return (
@@ -72,13 +74,13 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
             className="text-light-text hover:text-electric-blue transition duration-300"
             onClick={() => openAuthModal('login')}
           >
-            Login
+            {t('navbar.login')}
           </Button>
           <Button 
             className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
             onClick={() => openAuthModal('signup')}
           >
-            Sign Up
+            {t('navbar.signup')}
           </Button>
         </div>
         
@@ -115,7 +117,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
                 closeMobileMenu();
               }}
             >
-              Login
+              {t('navbar.login')}
             </Button>
             <Button 
               className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
@@ -124,7 +126,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
                 closeMobileMenu();
               }}
             >
-              Sign Up
+              {t('navbar.signup')}
             </Button>
           </div>
         </div>
