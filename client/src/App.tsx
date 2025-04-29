@@ -7,8 +7,6 @@ import Services from "@/pages/Services";
 import Portfolio from "@/pages/Portfolio";
 import Testimonials from "@/pages/Testimonials";
 import Contact from "@/pages/Contact";
-import Login from "@/pages/Login";
-import SignUp from "@/pages/SignUp";
 import Dashboard from "@/pages/Dashboard";
 import AdminDashboard from "@/pages/AdminDashboard";
 import Navbar from "@/components/Navbar";
@@ -16,12 +14,12 @@ import Navbar from "@/components/Navbar";
 const ProtectedAdminRoute = ({ component: Component }: { component: React.ComponentType }) => {
   const [, navigate] = useLocation();
   const [isAuthorized, setIsAuthorized] = useState(false);
-  
+
   useEffect(() => {
     const checkAuth = () => {
       const isAuth = localStorage.getItem('isAuthenticated') === 'true';
       const isAdmin = localStorage.getItem('userEmail') === 'admin@example.com';
-      
+
       if (!isAuth || !isAdmin) {
         navigate('/login');
         return;
@@ -52,11 +50,11 @@ import { useState, useEffect } from "react";
 
 function Router() {
   const [location] = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  
+
   return (
     <Switch>
       <Route path="/" component={Home} />
@@ -65,38 +63,34 @@ function Router() {
       <Route path="/portfolio" component={Portfolio} />
       <Route path="/testimonials" component={Testimonials} />
       <Route path="/contact" component={Contact} />
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/dashboard" component={Dashboard} />
-      <Route path="/admin-dashboard" component={() => <ProtectedAdminRoute component={AdminDashboard} />} />
       <Route component={NotFound} />
     </Switch>
   );
 }
 
 function App() {
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [activeAuthTab, setActiveAuthTab] = useState<'login' | 'signup'>('login');
+  //const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  //const [activeAuthTab, setActiveAuthTab] = useState<'login' | 'signup'>('login');
 
-  const openAuthModal = (tab: 'login' | 'signup') => {
-    setActiveAuthTab(tab);
-    setIsAuthModalOpen(true);
-  };
+  //const openAuthModal = (tab: 'login' | 'signup') => {
+  //  setActiveAuthTab(tab);
+  //  setIsAuthModalOpen(true);
+  //};
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar openAuthModal={openAuthModal} />
+      <Navbar />
       <main className="flex-grow">
         <Router />
       </main>
       <Footer />
       <ScrollToTop />
-      <AuthModal 
+      {/*<AuthModal 
         isOpen={isAuthModalOpen} 
         onClose={() => setIsAuthModalOpen(false)} 
         activeTab={activeAuthTab}
         setActiveTab={setActiveAuthTab}
-      />
+      />*/}
       <Toaster />
       <LiveChat />
       <ThemeToggle />

@@ -49,9 +49,11 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
 
   const navLinks = [
     { name: t('navbar.home'), path: "/" },
+    { name: t('navbar.about'), path: "/about" },
     { name: t('navbar.services'), path: "/services" },
     { name: t('navbar.portfolio'), path: "/portfolio" },
-    { name: t('navbar.dashboard'), path: "/dashboard" },
+    { name: t('navbar.testimonials'), path: "/testimonials" },
+    { name: t('navbar.contact'), path: "/contact" },
   ];
 
   return (
@@ -83,49 +85,14 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
           <PersonalizedCTA variant="compact" />
         </div>
 
-        {/* User Menu */}
-        <div className="hidden md:flex items-center space-x-4">
-          {localStorage.getItem('isAuthenticated') === 'true' ? (
-            <div className="flex items-center space-x-4">
-              {localStorage.getItem('userEmail') === 'admin@example.com' ? (
-                <Button variant="ghost" onClick={() => navigate('/admin-dashboard')}>
-                  Admin Dashboard
-                </Button>
-              ) : (
-                <Button variant="ghost" onClick={() => navigate('/dashboard')}>
-                  {localStorage.getItem('userEmail') ? localStorage.getItem('userEmail').split('@')[0] : 'Profile'}
-                </Button>
-              )}
-              <Button 
-                variant="ghost"
-                className="text-light-text hover:text-electric-blue transition duration-300"
-                onClick={() => {
-                  localStorage.removeItem('isAuthenticated');
-                  localStorage.removeItem('userEmail');
-                  setIsAuthenticated(false);
-                  navigate('/');
-                }}
-              >
-                Logout
-              </Button>
-            </div>
-          ) : (
-            <>
-              <Button 
-                variant="ghost" 
-                className="text-light-text hover:text-electric-blue transition duration-300"
-                onClick={() => openAuthModal('login')}
-              >
-                {t('navbar.login')}
-              </Button>
-              <Button 
-                className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
-                onClick={() => openAuthModal('signup')}
-              >
-                {t('navbar.signup')}
-              </Button>
-            </>
-          )}
+        {/* Contact Button */}
+        <div className="hidden md:flex items-center">
+          <Button 
+            className="bg-electric-blue hover:bg-neon-purple text-white font-medium transition duration-300"
+            onClick={() => navigate('/contact')}
+          >
+            Contact Us
+          </Button>
         </div>
 
         {/* Mobile Menu Toggle */}
