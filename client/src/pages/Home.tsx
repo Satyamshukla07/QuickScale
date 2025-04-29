@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ChartPieIcon, BarChartIcon } from "lucide-react";
+import { ChartPieIcon, BarChartIcon, Instagram, PenTool, Search, BarChart3, Palette, Code, Smartphone, Globe, AtSign, ArrowRight, Zap, Building, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import GlassCard from "@/components/GlassCard";
 import CounterAnimation from "@/components/CounterAnimation";
 import LogoCarousel from "@/components/ui/logo-carousel";
+import { SERVICES, TEAM_MEMBERS, TIMELINE } from "@/lib/constants";
 
 const Home = () => {
   const stats = [
@@ -179,6 +180,215 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Services Section */}
+      <section className="py-28 bg-dark-bg relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-electric-blue/5 via-neon-purple/5 to-neon-teal/5 opacity-70"></div>
+        <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-neon-purple/10 blur-3xl"></div>
+        <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-electric-blue/10 blur-3xl"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6">
+              Our <span className="gradient-text">Services</span>
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+              Comprehensive digital solutions to help your business thrive in the digital landscape.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {SERVICES.slice(0, 6).map((service, index) => {
+              // Map icon names to imported icon components
+              const iconMap: {[key: string]: any} = {
+                Instagram, PenTool, Search, BarChart3, Palette, Code, Smartphone, Globe, AtSign
+              };
+              const IconComponent = iconMap[service.icon];
+              
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <GlassCard className="h-full flex flex-col relative overflow-hidden group" hoverEffect>
+                    {/* Service image */}
+                    <div className="h-48 w-full overflow-hidden">
+                      <img 
+                        src={service.image} 
+                        alt={service.title} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className={`text-${service.color === "blue" ? "electric-blue" : service.color === "purple" ? "neon-purple" : service.color === "teal" ? "neon-teal" : "neon-pink"} mb-4`}>
+                        {IconComponent && <IconComponent className="h-7 w-7" />}
+                      </div>
+                      <h3 className="text-xl font-bold font-poppins mb-3">{service.title}</h3>
+                      <p className="text-gray-300 mb-4 flex-grow text-sm">{service.description}</p>
+                    </div>
+                  </GlassCard>
+                </motion.div>
+              );
+            })}
+          </div>
+          
+          <motion.div 
+            className="mt-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link href="/services">
+              <Button className="px-8 py-6 rounded-md bg-neon-purple hover:bg-electric-blue text-white font-medium transition duration-300 btn-glow">
+                View All Services
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+      
+      {/* About Us Section */}
+      <section className="py-28 bg-dark-bg relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute inset-0 opacity-20 bg-dots"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-5xl font-bold font-poppins mb-6">
+              About <span className="gradient-text">QuickScale</span>
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto text-lg">
+              We're a team of passionate digital experts on a mission to transform brands.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* About Us Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <GlassCard className="p-8 h-full">
+                <h3 className="text-2xl font-bold font-poppins mb-6 text-electric-blue">Who We Are</h3>
+                <p className="text-gray-300 mb-6">
+                  At QuickScale, we blend creativity with data-driven strategies to deliver exceptional digital experiences. Our team of experts is dedicated to helping businesses of all sizes establish a powerful online presence and achieve sustainable growth.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="text-center">
+                    <div className="w-14 h-14 rounded-full bg-electric-blue/20 flex items-center justify-center mx-auto mb-4">
+                      <Zap className="text-electric-blue h-7 w-7" />
+                    </div>
+                    <h4 className="font-bold mb-1">Fast Delivery</h4>
+                    <p className="text-gray-400 text-sm">Quick turnaround without compromising quality</p>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="w-14 h-14 rounded-full bg-neon-purple/20 flex items-center justify-center mx-auto mb-4">
+                      <Building className="text-neon-purple h-7 w-7" />
+                    </div>
+                    <h4 className="font-bold mb-1">Experienced Team</h4>
+                    <p className="text-gray-400 text-sm">Industry veterans with proven success records</p>
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="w-14 h-14 rounded-full bg-neon-teal/20 flex items-center justify-center mx-auto mb-4">
+                      <TrendingUp className="text-neon-teal h-7 w-7" />
+                    </div>
+                    <h4 className="font-bold mb-1">Results-Driven</h4>
+                    <p className="text-gray-400 text-sm">Focused on metrics that matter to your business</p>
+                  </div>
+                </div>
+                
+                <Link href="/about">
+                  <Button className="w-full bg-electric-blue hover:bg-neon-purple text-white font-medium py-4 rounded-md transition duration-300">
+                    Learn More About Us
+                  </Button>
+                </Link>
+              </GlassCard>
+            </motion.div>
+            
+            {/* Timeline */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="flex flex-col justify-center"
+            >
+              <h3 className="text-2xl font-bold font-poppins mb-6 text-neon-purple">Our Journey</h3>
+              
+              <div className="relative pl-8 border-l-2 border-neon-purple">
+                {TIMELINE.map((item, index) => (
+                  <motion.div
+                    key={index}
+                    className="mb-10 relative last:mb-0"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.2 }}
+                  >
+                    <div className="absolute -left-11 w-5 h-5 rounded-full bg-neon-purple flex items-center justify-center">
+                      <div className="w-3 h-3 rounded-full bg-white"></div>
+                    </div>
+                    <h4 className="text-xl font-bold font-poppins mb-2">{item.year}</h4>
+                    <p className="text-gray-300">{item.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+              
+              {/* Team preview */}
+              <motion.div
+                className="mt-8 glass p-6 rounded-xl relative overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="flex -space-x-4 mb-4">
+                  {TEAM_MEMBERS.slice(0, 4).map((member, index) => (
+                    <div key={index} className="w-12 h-12 rounded-full overflow-hidden border-2 border-dark-bg">
+                      <img 
+                        src={member.imageUrl} 
+                        alt={member.name} 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <p className="text-gray-300 text-sm mb-2">Meet our talented team of digital experts</p>
+                <Link href="/about">
+                  <Button variant="link" className="text-neon-purple hover:text-white p-0">
+                    View Team →
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+      
       {/* Clients Section */}
       <section className="py-28 bg-dark-bg relative overflow-hidden">
         {/* Background decorations */}
