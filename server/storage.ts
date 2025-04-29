@@ -7,19 +7,19 @@ export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  
+
   // Contact submissions
   createContact(contact: InsertContact & { createdAt: string }): Promise<ContactSubmission>;
   getContactSubmissions(): Promise<ContactSubmission[]>;
-  
+
   // Portfolio projects
   getPortfolioProjects(): Promise<PortfolioProject[]>;
   getPortfolioProjectById(id: number): Promise<PortfolioProject | undefined>;
-  
+
   // Testimonials
   getTestimonials(): Promise<Testimonial[]>;
   getTestimonialById(id: number): Promise<Testimonial | undefined>;
-  
+
   // Form submissions (for notifications)
   createSubmission(submission: {
     type: string;
@@ -31,6 +31,7 @@ export interface IStorage {
   getAllSubmissions(): Promise<FormSubmission[]>;
   getSubmissionById(id: number): Promise<FormSubmission | undefined>;
   markSubmissionAsViewed(id: number): Promise<void>;
+  validateAdminCredentials(email: string, password: string): boolean;
 }
 
 export class MemStorage implements IStorage {
@@ -39,7 +40,7 @@ export class MemStorage implements IStorage {
   private projects: Map<number, PortfolioProject>;
   private testimonialsList: Map<number, Testimonial>;
   private submissions: Map<number, FormSubmission>;
-  
+
   currentId: number;
   contactId: number;
   projectId: number;
@@ -52,13 +53,13 @@ export class MemStorage implements IStorage {
     this.projects = new Map();
     this.testimonialsList = new Map();
     this.submissions = new Map();
-    
+
     this.currentId = 1;
     this.contactId = 1;
     this.projectId = 1;
     this.testimonialId = 1;
     this.submissionId = 1;
-    
+
     // Initialize with sample portfolio projects
     this.initializeSampleData();
   }
@@ -79,34 +80,34 @@ export class MemStorage implements IStorage {
     this.users.set(id, user);
     return user;
   }
-  
+
   async createContact(contact: InsertContact & { createdAt: string }): Promise<ContactSubmission> {
     const id = this.contactId++;
     const newContact: ContactSubmission = { ...contact, id };
     this.contacts.set(id, newContact);
     return newContact;
   }
-  
+
   async getContactSubmissions(): Promise<ContactSubmission[]> {
     return Array.from(this.contacts.values());
   }
-  
+
   async getPortfolioProjects(): Promise<PortfolioProject[]> {
     return Array.from(this.projects.values());
   }
-  
+
   async getPortfolioProjectById(id: number): Promise<PortfolioProject | undefined> {
     return this.projects.get(id);
   }
-  
+
   async getTestimonials(): Promise<Testimonial[]> {
     return Array.from(this.testimonialsList.values());
   }
-  
+
   async getTestimonialById(id: number): Promise<Testimonial | undefined> {
     return this.testimonialsList.get(id);
   }
-  
+
   async createSubmission(submission: {
     type: string;
     data: Record<string, any>;
@@ -127,15 +128,15 @@ export class MemStorage implements IStorage {
     this.submissions.set(id, newSubmission);
     return newSubmission;
   }
-  
+
   async getAllSubmissions(): Promise<FormSubmission[]> {
     return Array.from(this.submissions.values());
   }
-  
+
   async getSubmissionById(id: number): Promise<FormSubmission | undefined> {
     return this.submissions.get(id);
   }
-  
+
   async markSubmissionAsViewed(id: number): Promise<void> {
     const submission = this.submissions.get(id);
     if (submission) {
@@ -143,7 +144,7 @@ export class MemStorage implements IStorage {
       this.submissions.set(id, submission);
     }
   }
-  
+
   private initializeSampleData() {
     // Sample portfolio projects
     const portfolioSamples: PortfolioProject[] = [
@@ -208,7 +209,7 @@ export class MemStorage implements IStorage {
         tags: ["Content Marketing", "SEO", "Travel"],
       }
     ];
-    
+
     // Sample testimonials
     const testimonialSamples: Testimonial[] = [
       {
@@ -239,15 +240,23 @@ export class MemStorage implements IStorage {
         imageUrl: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
       }
     ];
-    
+
     // Add sample data to storage
     portfolioSamples.forEach(project => {
       this.projects.set(project.id, project);
     });
-    
+
     testimonialSamples.forEach(testimonial => {
       this.testimonialsList.set(testimonial.id, testimonial);
     });
+  }
+
+  validateAdminCredentials(email: string, password: string): boolean {
+    const ADMIN_CREDENTIALS = {
+      email: 'admin@example.com',
+      password: 'admin123'
+    };
+    return email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password;
   }
 }
 

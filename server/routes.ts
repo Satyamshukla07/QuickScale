@@ -3,9 +3,31 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSchema } from "@shared/schema";
 import { z } from "zod";
+
+const adminLoginSchema = z.object({
+  email: z.string().email(),
+  password: z.string()
+});
+import { z } from "zod";
 import { notificationService } from "./notification";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+
+  // Admin login
+  app.post("/api/admin/login", async (req, res) => {
+    try {
+      const { email, password } = adminLoginSchema.parse(req.body);
+      if (storage.validateAdminCredentials(email, password)) {
+        res.json({ success: true });
+      } else {
+        res.status(401).json({ message: "Invalid credentials" });
+      }
+    } catch (error) {
+      res.status(400).json({ message: "Invalid request" });
+    }
+  });
+
+
   // Contact form submission
   app.post("/api/contact", async (req, res) => {
     try {
