@@ -16,12 +16,12 @@ interface AuthModalProps {
 
 const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps) => {
   const { toast } = useToast();
-  
+
   // Login form state
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  
+
   // Signup form state
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -29,7 +29,7 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
   const [signupPassword, setSignupPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agreeTerms, setAgreeTerms] = useState(false);
-  
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -55,10 +55,10 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
       });
     }
   };
-  
+
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (signupPassword !== confirmPassword) {
       toast({
         title: "Passwords don't match",
@@ -67,7 +67,7 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
       });
       return;
     }
-    
+
     if (!agreeTerms) {
       toast({
         title: "Terms Agreement Required",
@@ -76,14 +76,14 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
       });
       return;
     }
-    
+
     // Signup logic would go here
     toast({
       title: "Sign Up Attempted",
       description: "This is a demo. Actual registration would be implemented here.",
     });
   };
-  
+
   const resetForm = () => {
     setLoginEmail("");
     setLoginPassword("");
@@ -95,7 +95,7 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
     setConfirmPassword("");
     setAgreeTerms(false);
   };
-  
+
   const handleClose = () => {
     onClose();
     resetForm();
@@ -123,7 +123,7 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
           transition={{ duration: 0.2 }}
         >
           <div className="absolute inset-0 bg-black/80" onClick={handleClose} />
-          
+
           <motion.div
             className="glass rounded-xl max-w-md w-full relative z-10"
             variants={contentVariants}
@@ -139,7 +139,7 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
             >
               <X size={20} />
             </button>
-            
+
             {/* Tabs */}
             <div className="flex border-b border-gray-700">
               <button
@@ -163,7 +163,7 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
                 Sign Up
               </button>
             </div>
-            
+
             {/* Login Form */}
             {activeTab === 'login' && (
               <div className="p-6">
@@ -215,15 +215,21 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
                   <Button
                     type="submit"
                     className="bg-electric-blue hover:bg-neon-purple text-white font-medium py-3 px-6 rounded-md transition duration-300 w-full"
+                    onClick={() => {
+                      localStorage.setItem('isAuthenticated', 'true');
+                      localStorage.setItem('userName', loginEmail.split('@')[0]);
+                      onClose();
+                      window.location.reload();
+                    }}
                   >
                     Login
                   </Button>
-                  
+
                   <div className="relative flex items-center justify-center">
                     <div className="border-t border-gray-700 absolute w-full"></div>
                     <div className="bg-dark-bg px-4 relative z-10 text-gray-500">or continue with</div>
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-4">
                     <Button
                       type="button"
@@ -243,7 +249,7 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
                 </form>
               </div>
             )}
-            
+
             {/* Signup Form */}
             {activeTab === 'signup' && (
               <div className="p-6">
@@ -344,12 +350,12 @@ const AuthModal = ({ isOpen, onClose, activeTab, setActiveTab }: AuthModalProps)
                   >
                     Create Account
                   </Button>
-                  
+
                   <div className="relative flex items-center justify-center">
                     <div className="border-t border-gray-700 absolute w-full"></div>
                     <div className="bg-dark-bg px-4 relative z-10 text-gray-500">or sign up with</div>
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-4">
                     <Button
                       type="button"

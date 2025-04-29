@@ -80,7 +80,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
         <div className="hidden md:flex items-center space-x-4">
           {localStorage.getItem('isAuthenticated') === 'true' ? (
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" onClick={() => navigate('/dashboard')}>
+              <Button variant="ghost" onClick={() => navigate(localStorage.getItem('userName') === 'Admin' ? '/admin' : '/dashboard')}>
                 {localStorage.getItem('userName') || 'Profile'}
               </Button>
               <Button 
@@ -90,7 +90,6 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
                   localStorage.removeItem('isAuthenticated');
                   localStorage.removeItem('userName');
                   navigate('/');
-                  window.location.reload();
                 }}
               >
                 {t('navbar.logout')}

@@ -22,13 +22,30 @@ interface FormSubmission {
 
 export default function AdminDashboard() {
   const [, navigate] = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
   
-  // Check authentication
   useEffect(() => {
-    if (localStorage.getItem('isAuthenticated') !== 'true') {
-      navigate('/login');
-    }
-  }, []);
+    const checkAuth = () => {
+      const isAuth = localStorage.getItem('isAuthenticated') === 'true';
+      const isAdmin = localStorage.getItem('userName') === 'Admin';
+      
+      if (!isAuth || !isAdmin) {
+        navigate('/login');
+        return;
+      }
+      setIsLoading(false);
+    };
+    
+    checkAuth();
+  }, [navigate]);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p className="text-xl">Loading...</p>
+      </div>
+    );
+  }
   const { toast } = useToast();
   const [activeTab, setActiveTab] = useState<string>("all");
   
