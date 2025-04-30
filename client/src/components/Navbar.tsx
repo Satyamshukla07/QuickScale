@@ -87,8 +87,20 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
 
         {/* Mobile Menu Toggle */}
         <div className="md:hidden">
-          <Button variant="ghost" className="text-light-text focus:outline-none" onClick={toggleMobileMenu}>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <Button 
+            variant="ghost" 
+            className="text-light-text focus:outline-none p-2" 
+            onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-6 w-6 transition-transform duration-200" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+              style={{ transform: isMobileMenuOpen ? 'rotate(90deg)' : 'none' }}
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </Button>
@@ -96,8 +108,8 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden absolute w-full glass py-4 px-4 mt-2 transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10 pointer-events-none'}`}>
-        <div className="flex flex-col space-y-4">
+      <div className={`md:hidden fixed top-[60px] left-0 right-0 glass py-4 px-4 transition-all duration-300 shadow-lg z-40 ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}`}>
+        <div className="flex flex-col space-y-4 max-h-[calc(100vh-80px)] overflow-y-auto">
           {navLinks.map((link) => (
             <Link 
               key={link.path} 
