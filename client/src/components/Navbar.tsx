@@ -66,23 +66,24 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
   ];
 
   return (
-    <nav className={`fixed w-full z-[100] top-0 transition-all duration-300 ${isScrolled ? 'glass shadow-lg' : 'bg-background'}`}>
-      <div className="container mx-auto px-4 md:px-6">
+    <nav className={`fixed w-full z-[100] ${isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-lg' : 'bg-background/50'}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-2xl font-bold font-poppins text-foreground flex items-center">
-            <span className="text-electric-blue mr-1">
-              <Bolt className="h-6 w-6" />
-            </span>
-            QuickScale
+          <Link href="/" className="flex-shrink-0 flex items-center">
+            <Bolt className="h-8 w-8 text-electric-blue" />
+            <span className="ml-2 text-xl font-bold">QuickScale</span>
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:space-x-8">
             {navLinks.map((link) => (
-              <Link 
-                key={link.path} 
+              <Link
+                key={link.path}
                 href={link.path}
-                className={`text-light-text hover:text-electric-blue transition duration-300 ${location === link.path ? 'text-electric-blue' : ''}`}
+                className={`text-sm font-medium transition-colors hover:text-electric-blue ${
+                  location === link.path ? 'text-electric-blue' : 'text-foreground/80'
+                }`}
+                onClick={closeMobileMenu}
               >
                 {link.name}
               </Link>
@@ -92,47 +93,55 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-electric-blue"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-foreground hover:text-electric-blue focus:outline-none"
             onClick={toggleMobileMenu}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
           >
-            <div className="w-6 h-5 relative flex flex-col justify-between">
-              <span className={`w-full h-0.5 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-              <span className={`w-full h-0.5 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
-              <span className={`w-full h-0.5 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className="sr-only">Open main menu</span>
+            <div className="relative w-6 h-5">
+              <span
+                className={`absolute w-6 h-0.5 bg-current transform transition-all duration-300 ${
+                  isMobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''
+                }`}
+              />
+              <span
+                className={`absolute w-6 h-0.5 bg-current transform transition-all duration-300 translate-y-2 ${
+                  isMobileMenuOpen ? 'opacity-0' : ''
+                }`}
+              />
+              <span
+                className={`absolute w-6 h-0.5 bg-current transform transition-all duration-300 translate-y-4 ${
+                  isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
+                }`}
+              />
             </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
-      <div 
-        className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 md:hidden ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-        onClick={closeMobileMenu}
-      />
-
       {/* Mobile Menu */}
-      <div 
-        className={`fixed top-16 left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-border shadow-lg transition-transform duration-300 ease-in-out transform md:hidden ${
-          isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+      <div
+        className={`md:hidden fixed inset-0 top-16 bg-background/95 backdrop-blur-sm transition-transform duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
-        style={{ maxHeight: 'calc(100vh - 64px)', overflowY: 'auto' }}
       >
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col space-y-4">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.path} 
-                href={link.path}
-                className={`text-light-text hover:text-electric-blue transition duration-300 py-2 ${location === link.path ? 'text-electric-blue' : ''}`}
-                onClick={closeMobileMenu}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="pt-4 border-t border-border">
-              <PersonalizedCTA variant="compact" />
-            </div>
+        <div className="px-4 pt-2 pb-3 space-y-1">
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              href={link.path}
+              className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                location === link.path
+                  ? 'text-electric-blue bg-electric-blue/10'
+                  : 'text-foreground/80 hover:text-electric-blue hover:bg-electric-blue/5'
+              }`}
+              onClick={closeMobileMenu}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <div className="mt-4 px-3">
+            <PersonalizedCTA variant="compact" />
           </div>
         </div>
       </div>
