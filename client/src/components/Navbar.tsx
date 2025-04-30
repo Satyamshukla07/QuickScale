@@ -66,7 +66,7 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
   ];
 
   return (
-    <nav className={`fixed w-full z-50 top-0 transition-all duration-300 ${isScrolled ? 'glass shadow-lg' : ''}`}>
+    <nav className={`fixed w-full z-[100] top-0 transition-all duration-300 ${isScrolled ? 'glass shadow-lg' : 'bg-background'}`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-2xl font-bold font-poppins text-foreground flex items-center">
@@ -113,9 +113,10 @@ const Navbar = ({ openAuthModal }: NavbarProps) => {
 
       {/* Mobile Menu */}
       <div 
-        className={`absolute top-16 left-0 right-0 bg-background border-t border-border shadow-lg transition-transform duration-300 ease-in-out transform md:hidden ${
-          isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
+        className={`fixed top-16 left-0 right-0 bg-background/95 backdrop-blur-sm border-t border-border shadow-lg transition-transform duration-300 ease-in-out transform md:hidden ${
+          isMobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
         }`}
+        style={{ maxHeight: 'calc(100vh - 64px)', overflowY: 'auto' }}
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col space-y-4">
