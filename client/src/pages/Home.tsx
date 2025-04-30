@@ -21,8 +21,20 @@ const Home = () => {
   return (
     <>
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 md:py-36">
-        <div className="container mx-auto px-4 md:px-6">
+      <section id="home" className="pt-32 pb-20 md:py-36 relative overflow-hidden">
+        {/* Hero background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-1/4 w-72 h-72 bg-electric-blue/10 rounded-full filter blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-purple/10 rounded-full filter blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-electric-blue/5 via-neon-purple/5 to-neon-pink/5 rounded-full filter blur-3xl opacity-50"></div>
+        </div>
+        
+        {/* Floating elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 border border-electric-blue/20 rounded-full animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-16 h-16 border border-neon-purple/20 rounded-full animate-float-reverse"></div>
+        <div className="absolute top-40 right-20 w-12 h-12 border border-neon-pink/20 rounded-full animate-float-slow"></div>
+        
+        <div className="container mx-auto px-4 md:px-6 relative">
           <div className="flex flex-col md:flex-row items-center">
             <motion.div 
               className="md:w-1/2 mb-10 md:mb-0"
