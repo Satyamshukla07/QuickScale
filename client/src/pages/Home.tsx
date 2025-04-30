@@ -28,13 +28,13 @@ const Home = () => {
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-neon-purple/10 rounded-full filter blur-3xl"></div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-electric-blue/5 via-neon-purple/5 to-neon-pink/5 rounded-full filter blur-3xl opacity-50"></div>
         </div>
-        
+
         {/* Floating elements */}
         <div className="absolute top-20 left-10 w-20 h-20 border border-electric-blue/20 rounded-full animate-float"></div>
         <div className="absolute bottom-20 right-10 w-16 h-16 border border-neon-purple/20 rounded-full animate-float-reverse"></div>
         <div className="absolute top-40 right-20 w-12 h-12 border border-neon-pink/20 rounded-full animate-float-slow"></div>
-        
-        <div className="container mx-auto px-4 md:px-6 relative">
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative">
           <div className="flex flex-col md:flex-row items-center">
             <motion.div 
               className="md:w-1/2 mb-10 md:mb-0"
@@ -141,7 +141,7 @@ const Home = () => {
         <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-neon-pink/5 blur-2xl"></div>
         <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-electric-blue/5 blur-2xl"></div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <motion.div
               className="md:w-1/2"
@@ -195,7 +195,7 @@ const Home = () => {
         <div className="absolute bottom-10 right-10 w-32 h-32 rounded-full bg-neon-pink/5 blur-2xl"></div>
         <div className="absolute top-10 left-10 w-40 h-40 rounded-full bg-electric-blue/5 blur-2xl"></div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -255,7 +255,7 @@ const Home = () => {
         <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-neon-purple/10 blur-3xl"></div>
         <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-electric-blue/10 blur-3xl"></div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -333,7 +333,7 @@ const Home = () => {
         {/* Background decorations */}
         <div className="absolute inset-0 opacity-20 bg-dots"></div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -462,7 +462,7 @@ const Home = () => {
         {/* Background decorations */}
         <div className="absolute inset-0 opacity-20 bg-dots"></div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
@@ -530,7 +530,7 @@ const Home = () => {
         <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-electric-blue/5 blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-neon-purple/5 blur-3xl"></div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <motion.div
             className="text-center mb-8"
             initial={{ opacity: 0, y: 20 }}

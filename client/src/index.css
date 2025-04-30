@@ -88,13 +88,13 @@ body {
 
 /* Dark mode background */
 .dark body {
-  background-color: hsl(220 50% 8%);
+  background-color: hsl(220 50% 12%);
   background-image: 
-    radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.25) 0%, transparent 35%),
-    radial-gradient(circle at 85% 60%, rgba(198, 82, 255, 0.25) 0%, transparent 35%),
-    radial-gradient(circle at 50% 80%, rgba(255, 56, 179, 0.15) 0%, transparent 30%),
-    linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.02) 75%),
-    linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.02) 75%);
+    radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 85% 60%, rgba(198, 82, 255, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(255, 56, 179, 0.1) 0%, transparent 40%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.03) 75%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.03) 75%);
   background-size: 100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px;
   background-position: 0 0, 0 0, 0 0, 0 0, 30px 30px;
 }
