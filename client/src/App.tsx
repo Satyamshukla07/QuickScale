@@ -93,8 +93,8 @@ function App() {
       />*/}
       <Toaster />
       <LiveChat />
-      <ThemeToggle />
-      <LanguageSwitcher />
+      
+     
     </div>
   );
 }
