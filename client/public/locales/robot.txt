@@ -1,0 +1,7 @@
+
+User-agent: *
+Allow: /
+Sitemap: https://quikscale.in/sitemap.xml
+
+Disallow: /dashboard
+Disallow: /admin
