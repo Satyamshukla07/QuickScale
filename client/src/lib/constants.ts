@@ -4,9 +4,9 @@ export const COMPANY_INFO = {
   slogan: "Accelerate Your Digital Presence",
   tagline: "Accelerate Your Digital Presence with QuickScale!",
   email: "info@quickscale.com",
-  phone: "+1 (415) 555-7890",
-  whatsapp: "+1 (415) 555-7890",
-  address: "123 Innovation Drive, Tech District, San Francisco, CA 94107",
+  phone: "7304281255",
+  whatsapp: "8652711089",
+  address: "Rudraksha Complex , Vaishali Nagar Dahisar East , Mumbai-400068",
   yearFounded: 2015,
   socialMedia: {
     facebook: "https://facebook.com/quickscale",

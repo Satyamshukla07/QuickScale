@@ -212,8 +212,8 @@ const Contact = () => {
                   <div>
                     <h4 className="text-lg font-semibold text-white mb-1">Our Office</h4>
                     <p className="text-gray-300">
-                      123 Innovation Drive, Tech District<br />
-                      San Francisco, CA 94107
+                      Rudraksha Complex , Vaishali Nagar<br />
+                      Dahisar East , Mumbai-400068
                     </p>
                   </div>
                 </div>
@@ -241,7 +241,7 @@ const Contact = () => {
                       href="tel:+14155557890"
                       className="text-gray-300 hover:text-neon-purple transition duration-300"
                     >
-                      +1 (415) 555-7890
+                     +91 7304281255
                     </a>
                   </div>
                 </div>
@@ -255,7 +255,7 @@ const Contact = () => {
                       href="https://wa.me/14155557890"
                       className="text-gray-300 hover:text-electric-blue transition duration-300"
                     >
-                      +1 (415) 555-7890
+                      +91 8652711089
                     </a>
                   </div>
                 </div>
@@ -294,7 +294,7 @@ const Contact = () => {
             {/* Map */}
             <GlassCard className="p-4 h-[300px] overflow-hidden">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.1066655783687!2d-122.40096278447546!3d37.78565977975729!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858085277d429b%3A0x67ba4f04f149ba61!2sSan%20Francisco%2C%20CA%2094107%2C%20USA!5e0!3m2!1sen!2sus!4v1625177674137!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.9796963332167!2d75.73581227501611!3d26.873912976720414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db41e9a9f8ccf%3A0x87e9823f430c5f6a!2sTej%20Nagar%2C%20Kishan%20Bagh%2C%20Jaipur%2C%20Rajasthan%20302018!5e0!3m2!1sen!2sin!4v1706506627659!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
