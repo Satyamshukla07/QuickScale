@@ -171,16 +171,16 @@ export const STATS = [
 // Company timeline
 export const TIMELINE = [
   {
-    year: "2015",
+    year: "2023",
     description: "Founded with the vision to disrupt digital marketing.",
   },
   {
-    year: "2018",
+    year: "2024",
     description: "Expanded services to include advanced analytics and AI-powered insights.",
   },
   {
-    year: "2023",
-    description: "Established as an industry leader with international client base.",
+    year: "2025",
+    description: "Established as an industry leader with diverse client base.",
   },
 ];
 
