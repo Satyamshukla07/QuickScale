@@ -98,7 +98,7 @@ export const TEAM_MEMBERS = [
     id: 1,
     name: "Satyam Shukla",
     position: "CEO & Founder",
-    bio: "Digital strategist with 15+ years experience in transforming brands.",
+    bio: "Digital strategist with years of experience in transforming brands.",
     imageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     socialLinks: {
       linkedin: "#",
@@ -109,7 +109,7 @@ export const TEAM_MEMBERS = [
     id: 2,
     name: "Deepak Yadav",
     position: "Creative Director",
-    bio: "Award-winning designer specializing in brand identities and UI/UX.",
+    bio: "Designer specializing in brand identities and UI/UX.",
     imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     socialLinks: {
       linkedin: "#",
@@ -162,7 +162,7 @@ export const STATS = [
   },
   {
     value: 12,
-    label: "Industry Awards",
+    label: "Contributed to projects",
     color: "purple",
     symbol: "+",
   },

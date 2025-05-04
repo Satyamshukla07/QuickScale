@@ -28,6 +28,7 @@ import { useToast } from "@/hooks/use-toast";
 const quickQuoteSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
+  phone: z.string().min(10, { message: "Please enter a valid phone number" }),
   service: z.string().min(1, { message: "Please select a service" }),
   budget: z.string().min(1, { message: "Please select a budget range" }),
 });
@@ -45,6 +46,7 @@ export default function QuickQuoteForm() {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
       service: "",
       budget: "",
     },
@@ -54,12 +56,12 @@ export default function QuickQuoteForm() {
   const onSubmit = async (data: QuickQuoteFormValues) => {
     setSubmitting(true);
     try {
-      const response = await fetch('/api/admin/submissions', {
+      const response = await fetch('/api/quote', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ type: 'quote', data }),
+        body: JSON.stringify({ ...data, notifyEmail: 'quick7scale@gmail.com', notifyWhatsapp: '7304281255' }),
       });
 
       if (response.ok) {
@@ -184,13 +186,14 @@ export default function QuickQuoteForm() {
             </motion.div>
           )}
 
-          {/* Step 2: Email */}
+          {/* Step 2: Contact Information */}
           {step === 2 && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.3 }}
+              className="space-y-4"
             >
               <FormField
                 control={form.control}
@@ -202,6 +205,24 @@ export default function QuickQuoteForm() {
                       <Input 
                         type="email" 
                         placeholder="you@example.com" 
+                        className="bg-background/50"
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number</FormLabel>
+                    <FormControl>
+                      <Input 
+                        type="tel" 
+                        placeholder="+1 (123) 456-7890" 
                         className="bg-background/50"
                         {...field} 
                       />
